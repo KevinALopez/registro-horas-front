@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
-  isModalOpen = false;
+  isModalOpen = true;  // Forzar que el modal esté siempre abierto para pruebas
 
   toggleModal() {
     this.isModalOpen = !this.isModalOpen;
@@ -18,4 +17,7 @@ export class HeaderComponent {
     this.isModalOpen = false;
   }
 
+  logout() {
+    console.log("Cerrando sesión...");
+  }
 }
