@@ -1,0 +1,107 @@
+/* Navbar personalizado */
+  .custom-navbar {
+    background-color: #2b0953; /* Fondo del navbar */
+    padding: 15px;
+  }
+
+  .custom-navbar .navbar-brand {
+    margin-left: 15px; /* Mueve la marca a la izquierda con margen */
+  }
+
+  /* Contenedor de acciones del usuario */
+  .user-actions {
+    position: relative; /* Necesario para posicionar el modal relativo al icono */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre icono y botón */
+    margin-right: 15px; /* Separación del borde derecho */
+  }
+
+  /* Icono de usuario más grande */
+  .user-icon {
+    font-size: 30px; /* Tamaño aumentado */
+    color: #D8CCBD; /* Color del icono */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  /* Efecto hover en icono */
+  .user-icon:hover {
+    transform: scale(1.2);
+  }
+
+  /* Botón de cerrar sesión más pequeño */
+  .logout-btn {
+    background-color: #726DAD; /* Color de fondo */
+    color: #D8CCBD; /* Color del texto */
+    border: none;
+    padding: 5px 10px; /* Reducido tamaño del botón */
+    border-radius: 5px;
+    font-size: 12px; /* Texto más pequeño */
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .logout-btn:hover {
+    background-color: #585657; /* Color al pasar el mouse */
+  }
+
+  /* Estilos del modal (Ahora cerca del icono de usuario) */
+  .modal {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 45px; /* Aparece justo debajo del icono */
+    right: 0; /* Pegado a la derecha del contenedor */
+    background-color: #272025;
+    color: #D8CCBD;
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    z-index: 10;
+  }
+
+  /* Contenido del modal */
+  .modal-content {
+    text-align: center;
+  }
+
+  /* Botón de cerrar modal */
+  .close {
+    color: #D8CCBD;
+    font-size: 24px;
+    float: right;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .close:hover {
+    color: #726DAD;
+  }
+
+  /* Campos de entrada */
+  input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #726DAD;
+    border-radius: 5px;
+    background-color: #585657;
+    color: #D8CCBD;
+  }
+
+  /* Botón de guardar */
+  .save-btn {
+    background-color: #2B0953;
+    color: #D8CCBD;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .save-btn:hover {
+    background-color: #726DAD;
+    transform: scale(1.05);
+  }
