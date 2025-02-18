@@ -1,0 +1,53 @@
+/* Estilos del footer */
+.custom-footer {
+  background-color: #F0EDE6;
+  text-align: center;
+  padding: 0.625rem 0;
+  font-size: 0.875rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor principal del footer */
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Nombre de la empresa */
+.company-name {
+  font-weight: bold;
+  font-size: 0.875rem;
+  margin-bottom: 0.3125rem;
+  color: #2b0953;
+}
+
+/* Estilos de los iconos */
+.social-icons {
+  display: flex;
+  gap: 0.9375rem;
+}
+
+/* Íconos de redes sociales */
+.social-icons a {
+  color: #2b0953;
+  font-size: 1.25rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto hover: aumenta el tamaño de los iconos */
+.social-icons a:hover {
+  transform: scale(1.8);
+  color: #726DAD;
+}
