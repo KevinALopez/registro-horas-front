@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.bigContainer {
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    height: 100vh;
+
+
+}
+
+.containerLogin {
+    border: 2px solid black;
+    background: linear-gradient(to top right, rgba(68, 68, 70, 0.596), rgba(43, 43, 44, 0.363));
+    padding: 2.3rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(10px, 10px, 10px, 0.1);
+
+}
+
+.formulario {
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.116);
+    display: flex;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.label {
+    color: white;
+    margin-bottom: 0.4rem;
+}
