@@ -8,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  isModalOpen = false;
+
+  toggleModal() {
+    this.isModalOpen = !this.isModalOpen;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
 }
