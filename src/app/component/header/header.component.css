@@ -1,6 +1,9 @@
 /* Estilos del header */
 .custom-navbar {
-  background-color: #F0EDE6;
+  background-image: url("/images/-w3UOCHSTG21jOEzaVCcfw.webp");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -91,14 +94,15 @@
 
 /* Estilos del modal (SIEMPRE VISIBLE PARA PRUEBAS) */
 .modal {
-  display: block !important;  /* Hace que el modal siempre se muestre */
+  display: block; /*!important;  /* Hace que el modal siempre se muestre */
   position: absolute;
   top: 60px;
-  right: 20px;
+  right: 30px;
   width: 450px;
   height: 450PX;
-  background-color: #272025;
-  color: #D8CCBD;
+  background-image: url("/images/-w3UOCHSTG21jOEzaVCcfw.webp");
+  background-size: cover;
+  color: black;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
@@ -111,11 +115,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
 }
 
 /* Botón de cerrar modal */
 .close {
-  color: #D8CCBD;
+  color: red;
   font-size: 24px;
   float: right;
   cursor: pointer;
@@ -133,7 +140,8 @@ input {
   margin: 5px 0;
   border: 1px solid #726DAD;
   border-radius: 5px;
-  background-color: #585657;
+  background-image: url("/images/-w3UOCHSTG21jOEzaVCcfw.webp");
+  background-size: cover;
   color: #D8CCBD;
   font-size: 14px;
 }
@@ -163,5 +171,184 @@ input {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+
+.header-logo {
+  width: 80px; /* 🔥 Reducir tamaño (antes 130px) */
+  height: auto;
+  filter: brightness(0) invert(1); /* 🔥 Convierte la imagen negra en blanca */
+  margin-left: 60px; /* 🔥 Desplaza el logo 10px a la derecha */
+}
+
+/* 📌 ESTILO POR DEFECTO (Desktop y pantallas grandes) */
+@media (min-width: 1200px) {
+  .custom-navbar {
+    height: 70px; /* Un poco más alto en pantallas grandes */
+  }
+
+  .header-logo {
+    width: 100px; /* Aumenta el tamaño del logo */
+  }
+
+  .modal {
+    width: 500px; /* Modal más grande en pantallas grandes */
+    height: 500px;
+  }
+}
+/* 📌 TABLET (Pantallas medianas como iPads y Kindle Fire) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .custom-navbar {
+    height: 65px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* 🔥 LOGO CENTRADO Y EN TAMAÑO CORRECTO */
+  .header-logo {
+    width: 60px;
+    height: auto;
+    margin-left: 10px; /* 🔥 Ajustar la posición del logo */
+    display: flex;
+    align-items: center;
+  }
+
+  /* 🔥 CONTENEDOR DE ICONOS Y BOTÓN CORREGIDO */
+  .user-actions {
+    display: flex;
+    align-items: center; /* 🔥 Mantiene todo alineado verticalmente */
+    justify-content: flex-end;
+    gap: 10px; /* 🔥 Reduce el espacio entre ícono y botón */
+    margin-right: 15px;
+  }
+
+  /* 🔥 ÍCONO DE USUARIO AJUSTADO */
+  .fa-user-tie {
+    font-size: 28px;
+    padding: 8px;
+    border-radius: 50%;
+  }
+
+  /* 🔥 BOTÓN CERRAR SESIÓN MÁS PEQUEÑO Y CENTRADO */
+  .logout-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* 🔥 MODAL CENTRADO Y CON MEJOR DISEÑO EN TABLETS */
+  .modal {
+    width: 75vw;
+    height: auto;
+    right: 12.5%;
+    left: 12.5%;
+    top: 15vh; /* 🔥 Mejor ajuste de altura */
+    position: fixed;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+  }
+
+  /* 🔥 Ajustar contenido del modal */
+  .modal-content {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 🔥 Ajustar inputs */
+  input {
+    font-size: 16px;
+    padding: 12px;
+    width: 80%;
+  }
+
+  .save-btn {
+    font-size: 16px;
+    padding: 12px;
+    width: 80%;
+  }
+
+  /* 🔥 Botón de cerrar más grande */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    color: red;
+  }
+}
+
+
+/* 📌 MÓVIL (Pantallas pequeñas) */
+@media (max-width: 767px) {
+  .custom-navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 5px;
+  }
+
+  .header-logo {
+    width: 80px;
+    margin-left: 0;
+    display: block;
+    margin: auto;
+  }
+
+  .user-actions {
+    justify-content: center;
+    margin-right: 0;
+  }
+
+  /* 🔥 MODAL A PANTALLA COMPLETA EN MÓVIL */
+  .modal {
+    width: 100vw; /* Ocupa todo el ancho de la pantalla */
+    height: 100vh; /* Ocupa toda la altura */
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    padding: 20px;
+    border-radius: 0; /* Elimina bordes redondeados */
+    z-index: 1000;
+  }
+
+  /* 🔥 Centrar contenido en el modal */
+  .modal-content {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  /* 🔥 Ajustar inputs */
+  input {
+    font-size: 16px;
+    padding: 12px;
+    width: 90%;
+  }
+
+  .save-btn {
+    font-size: 16px;
+    padding: 12px;
+    width: 90%;
+  }
+
+  /* 🔥 Botón de cerrar más grande */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 30px;
+    color: red;
   }
 }
