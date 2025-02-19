@@ -20,6 +20,13 @@ type HourByDateReponse = {
   }[];
 };
 
+type RegisetHoursOnProjectPayload = {
+  userId: number;
+  projectId: number;
+  date: string;
+  hours: number;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -73,9 +80,25 @@ export class HoursService {
     );
   }
 
-  getUserHoursByDate(date: string) {
+  getHoursByDate(date: string) {
     return lastValueFrom(
       this.http.post<HourByDateReponse>(`${this.baseUrl}`, { date })
+    );
+  }
+
+  registerHoursOnProject({
+    userId,
+    projectId,
+    date,
+    hours,
+  }: RegisetHoursOnProjectPayload) {
+    return lastValueFrom(
+      this.http.post<{ message: string }>(`${this.baseUrl}/projects`, {
+        userId,
+        projectId,
+        date,
+        hours,
+      })
     );
   }
 }
