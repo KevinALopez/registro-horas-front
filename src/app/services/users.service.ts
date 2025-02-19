@@ -18,6 +18,11 @@ type RegisterResponse = {
   id?: string;
 };
 
+type UpdateResponse = {
+  message: string;
+  updatedUser: IUser;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -43,5 +48,11 @@ export class UsersService {
 
   getById(id: number) {
     return lastValueFrom(this.http.get<IUser>(`${this.baseUrl}/users/${id}`));
+  }
+
+  updateById(id: number, updatedUser: IUser) {
+    return lastValueFrom(
+      this.http.put<UpdateResponse>(`${this.baseUrl}/users/${id}`, updatedUser)
+    );
   }
 }
