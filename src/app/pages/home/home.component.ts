@@ -26,7 +26,7 @@ export class HomeComponent {
   };
 
   async testIt() {
-    const response = await this.projectsService.getAll();
-    console.log(response.data);
+    const response = await this.projectsService.getById(4);
+    console.log(response);
   }
 }

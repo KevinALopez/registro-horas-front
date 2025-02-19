@@ -26,4 +26,8 @@ export class ProjectsService {
       this.http.get<{ data: IProject[] }>(`${this.baseUrl}`)
     );
   }
+
+  getById(id: number) {
+    return lastValueFrom(this.http.get<IProject>(`${this.baseUrl}/${id}`));
+  }
 }
