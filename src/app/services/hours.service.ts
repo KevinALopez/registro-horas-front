@@ -8,6 +8,11 @@ type RegisterStartResponse = {
   id: number;
 };
 
+type RegisterPauseStartResponse = {
+  message: string;
+  id: number;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -34,6 +39,27 @@ export class HoursService {
   registerEnd(endTime: string, id: number) {
     return lastValueFrom(
       this.http.post<{ message: string }>(`${this.baseUrl}/end`, {
+        id,
+        end: endTime,
+      })
+    );
+  }
+
+  registerPauseStart(startTime: string, type: string) {
+    return lastValueFrom(
+      this.http.post<RegisterPauseStartResponse>(
+        `${this.baseUrl}/pause/start`,
+        {
+          type,
+          start: startTime,
+        }
+      )
+    );
+  }
+
+  registerPauseEnd(endTime: string, id: number) {
+    return lastValueFrom(
+      this.http.patch<{ message: string }>(`${this.baseUrl}/pause/end`, {
         id,
         end: endTime,
       })

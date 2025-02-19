@@ -14,11 +14,14 @@ export class HomeComponent {
 
   payload = {
     id: 23,
-    end: formatDate(Date.now(), 'yyyy-MM-dd HH:mm:ss', 'en-US'),
+    end: formatDate(Date.now() + 3600000, 'yyyy-MM-dd HH:mm:ss', 'en-US'),
   };
 
   async test() {
-    const response = await this.hoursService.registerEnd(this.payload.end, 23);
+    const response = await this.hoursService.registerPauseEnd(
+      this.payload.end,
+      14
+    );
 
     console.log(response);
   }
