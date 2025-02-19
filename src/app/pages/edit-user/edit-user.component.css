@@ -1,0 +1,68 @@
+/* 🔥 Ajuste general para evitar que el header tape el formulario */
+.container {
+  margin-top: 150px !important;
+  max-width: 600px;
+  background-image: url(/images/-w3UOCHSTG21jOEzaVCcfw.webp);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+/* 🔥 Estiliza el formulario dentro de un marco con sombra */
+.card {
+  background-image: url(/images/-w3UOCHSTG21jOEzaVCcfw.webp);
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border: none;
+}
+
+/* 🔥 Título del formulario */
+h2 {
+  text-align: center;
+  color: #2b0953;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* 🔥 Estilos de los inputs */
+.form-control {
+  border: 1px solid #726DAD;
+  border-radius: 5px;
+  background-color: #F0EDE6;
+  color: #272025;
+  padding: 10px;
+}
+
+.form-control:focus {
+  border-color: #2b0953;
+  box-shadow: 0 0 5px rgba(43, 9, 83, 0.5);
+}
+
+/* 🔥 Botones */
+.btn-primary {
+  background-color: #2b0953;
+  border: none;
+  padding: 10px 15px;
+}
+
+.btn-primary:hover {
+  background-color: #726DAD;
+}
+
+.btn-secondary {
+  background-color: #585657;
+  border: none;
+  padding: 10px 15px;
+}
+
+.btn-secondary:hover {
+  background-color: #272025;
+}
+
+/* 🔥 Pequeña ayuda debajo del campo de contraseña */
+.form-text {
+  color: #726DAD;
+  font-size: 12px;
+}
+
