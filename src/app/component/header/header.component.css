@@ -1,6 +1,9 @@
 /* Estilos del header */
 .custom-navbar {
-  background-color: #F0EDE6;
+  background-image: url("/images/-w3UOCHSTG21jOEzaVCcfw.webp");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -91,7 +94,7 @@
 
 /* Estilos del modal (SIEMPRE VISIBLE PARA PRUEBAS) */
 .modal {
-  display: block !important;  /* Hace que el modal siempre se muestre */
+  display: block; /*!important;  /* Hace que el modal siempre se muestre */
   position: absolute;
   top: 60px;
   right: 20px;
@@ -164,4 +167,12 @@ input {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+.header-logo {
+  width: 80px; /* 🔥 Reducir tamaño (antes 130px) */
+  height: auto;
+  filter: brightness(0) invert(1); /* 🔥 Convierte la imagen negra en blanca */
+  margin-left: 60px; /* 🔥 Desplaza el logo 10px a la derecha */
 }
