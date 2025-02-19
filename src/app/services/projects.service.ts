@@ -8,6 +8,10 @@ type CreateResponse = {
   projectId: number;
 };
 
+type DeleteResponse = {
+  message: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -29,5 +33,11 @@ export class ProjectsService {
 
   getById(id: number) {
     return lastValueFrom(this.http.get<IProject>(`${this.baseUrl}/${id}`));
+  }
+
+  deleteById(id: number) {
+    return lastValueFrom(
+      this.http.delete<DeleteResponse>(`${this.baseUrl}/${id}`)
+    );
   }
 }
