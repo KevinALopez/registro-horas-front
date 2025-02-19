@@ -1,33 +1,41 @@
 <nav class="navbar navbar-expand-lg custom-navbar">
   <div class="container-fluid">
-    <!-- Logo a la izquierda -->
+    <!-- Logo -->
     <a class="navbar-brand" href="#">
-      <img src="/images/a-clock-that-has-a-watching-eye-in-the-center (1).png"
-           alt="Logo" class="header-logo">
+      <img src="/images/a-clock-that-has-a-watching-eye-in-the-center (1).png" alt="Logo" class="header-logo">
     </a>
 
     <!-- Icono de usuario y botón de cerrar sesión -->
-    <div class="user-actions">
+   <!-- <div class="user-actions">
       <i class="fa-solid fa-user-tie" (click)="toggleModal()"></i>
       <button class="logout-btn" (click)="logout()">Cerrar</button>
 
-      <!-- Modal (se despliega cerca del icono de usuario) -->
-      <div class="modal" [@if]="isModalOpen">
+      <!-- Modal de actualización de contraseña -->
+      <!-- <div class="modal" [@If]="isModalOpen">
         <div class="modal-content">
           <span class="close" (click)="closeModal()">&times;</span>
-          <h2>Perfil de Usuario</h2>
-          <label for="username">Nombre:</label>
-          <input type="text" id="username" value="Usuario Demo" disabled>
+          <h2>Actualizar Contraseña</h2>
 
-          <label for="currentPassword">Contraseña Actual:</label>
-          <input type="password" id="currentPassword" placeholder="Ingrese contraseña actual">
+          <form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" [value]="loggedUser?.username" disabled>
 
-          <label for="newPassword">Nueva Contraseña:</label>
-          <input type="password" id="newPassword" placeholder="Ingrese nueva contraseña">
+            <label for="currentPassword">Contraseña Actual:</label>
+            <input type="password" id="currentPassword" formControlName="currentPassword" placeholder="Ingrese contraseña actual">
+            <small [@If]="passwordForm.get('currentPassword')?.invalid && passwordForm.get('currentPassword')?.touched">
+              La contraseña actual es obligatoria.
+            </small>
 
-          <button class="save-btn">Guardar</button>
+            <label for="newPassword">Nueva Contraseña:</label>
+            <input type="password" id="newPassword" formControlName="newPassword" placeholder="Ingrese nueva contraseña">
+            <small [@If]="passwordForm.get('newPassword')?.invalid && passwordForm.get('newPassword')?.touched">
+              La nueva contraseña debe tener al menos 8 caracteres y un carácter especial.
+            </small>
+
+            <button class="save-btn" type="submit" [disabled]="passwordForm.invalid">Guardar</button>
+          </form>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </nav>
