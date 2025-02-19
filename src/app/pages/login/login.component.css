@@ -15,7 +15,6 @@
     align-items: center;
     padding: 2rem;
     background-image: url("/images/-w3UOCHSTG21jOEzaVCcfw.webp");
-    width: auto;
     padding: 2rem;
     max-height: 500px;
     display: flex;
@@ -40,14 +39,23 @@
 }
 
 @media(max-width:767px) {
-    .containerAll {}
+    .containerAll {
+        flex-direction: column;
+
+    }
 
     .containerTitulo {
 
 
-        display: none;
+        h1 {
+            display: block;
 
+        }
 
+        p {
+            display: none;
+
+        }
     }
 }
 
