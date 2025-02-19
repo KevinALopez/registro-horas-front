@@ -13,6 +13,13 @@ type RegisterPauseStartResponse = {
   id: number;
 };
 
+type HourByDateReponse = {
+  data: {
+    hours: number;
+    username: string;
+  }[];
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -63,6 +70,12 @@ export class HoursService {
         id,
         end: endTime,
       })
+    );
+  }
+
+  getUserHoursByDate(date: string) {
+    return lastValueFrom(
+      this.http.post<HourByDateReponse>(`${this.baseUrl}`, { date })
     );
   }
 }
