@@ -1,10 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { StopwatchComponent } from './stopwatch/stopwatch.component';
-import { HeaderComponent } from '../../component/header/header.component';
-import { HttpClient } from '@angular/common/http';
-import { ProjectsService } from '../../services/projects.service';
-import { IProject } from '../../interfaces/iproject';
-import { formatDate } from '@angular/common';
+import { HoursService } from '../../services/hours.service';
 
 @Component({
   selector: 'app-home',
@@ -12,4 +8,14 @@ import { formatDate } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  hoursService = inject(HoursService);
+
+  payload = {};
+
+  async test() {
+    const response = await this.hoursService.getHoursInMonth(2, 2024);
+
+    console.log(response.data);
+  }
+}
