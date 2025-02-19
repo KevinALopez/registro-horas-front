@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { IUser } from '../interfaces/iuser';
 
 type LoginBody = {
   username: string;
@@ -10,6 +11,11 @@ type LoginBody = {
 type LoginResponse = {
   message: string;
   token?: string;
+};
+
+type RegisterResponse = {
+  message: string;
+  id?: string;
 };
 
 @Injectable({
@@ -22,6 +28,12 @@ export class UsersService {
   login(credentials: LoginBody) {
     return lastValueFrom(
       this.http.post<LoginResponse>(`${this.baseUrl}/auth/login`, credentials)
+    );
+  }
+
+  register(user: IUser) {
+    return lastValueFrom(
+      this.http.post<RegisterResponse>(`${this.baseUrl}/users/register`, user)
     );
   }
 }

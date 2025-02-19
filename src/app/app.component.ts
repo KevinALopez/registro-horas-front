@@ -7,7 +7,11 @@ import { TestingComponent } from './testing/testing.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FooterComponent /* TestingComponent */],
+  imports: [
+    RouterOutlet,
+    FooterComponent /* TestingComponent */,
+    TestingComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
