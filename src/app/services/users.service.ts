@@ -23,6 +23,10 @@ type UpdateResponse = {
   updatedUser: IUser;
 };
 
+type DeleteResponse = {
+  message: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -53,6 +57,12 @@ export class UsersService {
   updateById(id: number, updatedUser: IUser) {
     return lastValueFrom(
       this.http.put<UpdateResponse>(`${this.baseUrl}/users/${id}`, updatedUser)
+    );
+  }
+
+  deleteById(id: number) {
+    return lastValueFrom(
+      this.http.delete<DeleteResponse>(`${this.baseUrl}/users/${id}`)
     );
   }
 }
