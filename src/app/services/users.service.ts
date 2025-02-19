@@ -38,8 +38,10 @@ export class UsersService {
   }
 
   getAll() {
-    return lastValueFrom(
-      this.http.get<RegisterResponse>(`${this.baseUrl}/users`)
-    );
+    return lastValueFrom(this.http.get<IUser[]>(`${this.baseUrl}/users`));
+  }
+
+  getById(id: number) {
+    return lastValueFrom(this.http.get<IUser>(`${this.baseUrl}/users/${id}`));
   }
 }
