@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container-fluid">
+    <!-- Logo a la izquierda -->
+    <a class="navbar-brand" href="#">
+      <img src="/images/a-clock-that-has-a-watching-eye-in-the-center (1).png"
+           alt="Logo" class="header-logo">
+    </a>
+
+    <!-- Icono de usuario y botón de cerrar sesión -->
+    <div class="user-actions">
+      <i class="fa-solid fa-user-tie" (click)="toggleModal()"></i>
+      <button class="logout-btn" (click)="logout()">Cerrar</button>
+
+      <!-- Modal (se despliega cerca del icono de usuario) -->
+      <div class="modal" [@if]="isModalOpen">
+        <div class="modal-content">
+          <span class="close" (click)="closeModal()">&times;</span>
+          <h2>Perfil de Usuario</h2>
+          <label for="username">Nombre:</label>
+          <input type="text" id="username" value="Usuario Demo" disabled>
+
+          <label for="currentPassword">Contraseña Actual:</label>
+          <input type="password" id="currentPassword" placeholder="Ingrese contraseña actual">
+
+          <label for="newPassword">Nueva Contraseña:</label>
+          <input type="password" id="newPassword" placeholder="Ingrese nueva contraseña">
+
+          <button class="save-btn">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
