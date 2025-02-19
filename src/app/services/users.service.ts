@@ -36,4 +36,10 @@ export class UsersService {
       this.http.post<RegisterResponse>(`${this.baseUrl}/users/register`, user)
     );
   }
+
+  getAll() {
+    return lastValueFrom(
+      this.http.get<RegisterResponse>(`${this.baseUrl}/users`)
+    );
+  }
 }
