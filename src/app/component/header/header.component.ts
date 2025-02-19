@@ -1,3 +1,4 @@
+import { UsersService } from './../../services/users.service';
 import { Component, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -5,13 +6,14 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
   isModalOpen = false;
-  http = inject(HttpClient);
+  private http = inject(HttpClient);
+  private usersService = inject(UsersService);
 
   loggedUser: any;
 
@@ -20,14 +22,18 @@ export class HeaderComponent {
     newPassword: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-      Validators.pattern(/^(?=.*[@$!%*?&]).{8,}$/)
+      Validators.pattern(/^(?=.*[@$!%*?&]).{8,}$/) // Mínimo 8 caracteres + 1 especial
     ])
   });
 
   constructor() {
-    /*this.userService.loggedUser.subscribe((user: any) => {
+    // 🔹 Suscribirse al usuario autenticado
+    /* this.usersService.loggedUser$.subscribe(user => {
        this.loggedUser = user;
      });*/
+
+    // 🔹 Obtener el usuario si ya estaba logueado antes
+    /* this.loggedUser = this.usersService.getLoggedUser();*/
   }
 
   toggleModal() {
@@ -36,33 +42,43 @@ export class HeaderComponent {
 
   closeModal() {
     this.isModalOpen = false;
+    this.passwordForm.reset();
   }
 
   updatePassword() {
-    if (this.passwordForm.invalid) return;
+    if (this.passwordForm.invalid) {
+      alert("Por favor, complete correctamente los campos.");
+      return;
+    }
 
     const { currentPassword, newPassword } = this.passwordForm.value;
     const userId = this.loggedUser?.id;
 
-    /*this.http.put(`${environment.apiUrl}/users/${userId}/password`, {
-      userId,
-      currentPassword,
-      newPassword // **Corrección: agregar el campo `newPassword` en la petición**
-    }).subscribe({
-      next: () => {
-        alert('Contraseña actualizada correctamente');
-        this.passwordForm.reset();
+    if (!userId) {
+      alert("Error: Usuario no identificado.");
+      return;
+    }
+
+    // 🔹 Se llama a `updatePassword` desde `UsersService`
+    /*this.usersService.updatePassword(userId, currentPassword, newPassword)
+      .then(() => {
+        alert('Contraseña actualizada correctamente.');
         this.closeModal();
-      },
-      error: () => {
-        alert('Error al actualizar la contraseña');
-      }
-    });
+      })
+      .catch(error => {
+        if (error.status === 401) {
+          alert("Contraseña actual incorrecta.");
+        } else {
+          alert("Error al actualizar la contraseña. Intente de nuevo.");
+        }
+      });
   }*/
 
-    /*logout() {
-      console.log("Cerrando sesión...");
-    };*/
+    /*this.usersService.logout();*/
+    console.log("Cerrando sesión...");
   }
 
+  logout() {
+    console.log("Cerrando sesión...");
+  }
 }
