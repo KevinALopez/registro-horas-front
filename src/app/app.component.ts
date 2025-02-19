@@ -4,10 +4,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 
-
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FooterComponent /* TestingComponent */],
+  imports: [RouterOutlet, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
