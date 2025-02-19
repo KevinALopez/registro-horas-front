@@ -1,10 +1,12 @@
 <div class="bigContainer container ">
     <div class="containerLogin container">
-        <form action="">
+        <form [formGroup]="loginForm" (ngSubmit)="getLogin()">
             <label for="username" class="label">Username</label>
-            <input type="text" id="username" class="formulario" placeholder="Introduce tu username">
+            <input type="text" id="username" class="formulario" formControlName="username"
+                placeholder="Introduce tu Username">
+
             <label for="password" class="label">Password</label>
-            <input type="password" id="password" class="formulario" placeholder="Introduce tu contrasena">
+            <input type="password" formControlName="password" class="formulario" placeholder="Introduce tu contrasena">
 
             <button class="botonPro"> <img src="/images/a-clock-that-has-a-watching-eye-in-the-center (1).png"
                     alt=""><span>Entrar</span></button>
