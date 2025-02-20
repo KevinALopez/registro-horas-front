@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from './../../services/users.service';
 import Swal from 'sweetalert2';
+import { User } from './../../interfaces/user.interface';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,7 @@ export class HeaderComponent {
   private http = inject(HttpClient);
   private usersService = inject(UsersService);
 
-  loggedUser: any;
+  loggedUser: User | null = null;
 
   passwordForm = new FormGroup({
     currentPassword: new FormControl('', [Validators.required]),
@@ -29,13 +30,12 @@ export class HeaderComponent {
   });
 
   constructor() {
-    // 🔹 Suscribirse al usuario autenticado
-    /* this.usersService.loggedUser$.subscribe(user => {
-       this.loggedUser = user;
-     });*/
+    // Estas líneas importantes están comentadas
+    this.usersService.loggedUser$.subscribe(user => {
+      this.loggedUser = user;
+    });
 
-    // 🔹 Obtener el usuario si ya estaba logueado antes
-    /* this.loggedUser = this.usersService.getLoggedUser();*/
+    this.loggedUser = this.usersService.getLoggedUser();
   }
 
   toggleModal() {
@@ -70,13 +70,14 @@ export class HeaderComponent {
     // Usando el método existente updateById
     this.usersService.updateById(userId, {
       ...this.loggedUser,
-      password: newPassword
-    })
+      password: newPassword,
+      currentPassword // Agregamos la contraseña actual para validación
+    } as User)
       .then(() => {
         Swal.fire("Contraseña actualizada", "La contraseña ha sido actualizada correctamente.", "success");
         this.closeModal();
       })
-      .catch((error: any) => {
+      .catch((error: { status: number }) => {
         if (error.status === 401) {
           Swal.fire("Error", "La contraseña actual no coincide.", "error");
         } else {
@@ -86,16 +87,12 @@ export class HeaderComponent {
   }
 
   logout() {
-    // Usando lastValueFrom para manejar la respuesta del Observable
-    this.usersService.login({ username: '', password: '' }) // Llamada inválida para forzar logout
+    this.usersService.logout()
       .then(() => {
-        console.log("Cerrando sesión...");
-        // Aquí puedes agregar la redirección o limpiar el estado
-        window.location.href = '/login'; // o usar Router para navegar
+        window.location.href = '/login';
       })
-      .catch(() => {
-        console.log("Sesión cerrada exitosamente");
-        // La llamada fallará pero eso es lo que queremos para cerrar sesión
+      .catch((error: Error) => {
+        console.error('Error al cerrar sesión:', error);
       });
   }
 }

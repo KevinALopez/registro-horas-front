@@ -36,11 +36,12 @@
               placeholder="Ingrese contraseña actual"
             />
             <small
-              [@If]="
+              *ngIf="
                 passwordForm.get('currentPassword')?.invalid &&
                 passwordForm.get('currentPassword')?.touched
               "
             >
+              La contraseña actual es requerida
             </small>
 
             <label for="newPassword">Nueva Contraseña:</label>
@@ -70,11 +71,11 @@
       </div>
 
       <!-- Overlay para el fondo oscuro -->
-      <!-- <div
+      <div
         class="modal-overlay"
-        [@If]="isModalOpen"
+        *ngIf="isModalOpen"
         (click)="closeModal()"
-      ></div>-->
+      ></div>
     </div>
   </div>
 </nav>
