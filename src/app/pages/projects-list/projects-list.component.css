@@ -1,4 +1,15 @@
 .pojects-list {
   margin-top: 7rem;
   color: black;
+
+  > div {
+    max-height: 55vh;
+    max-width: 600px;
+    overflow: scroll;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
