@@ -1,0 +1,20 @@
+<section class="container text-center pojects-list">
+  <h1 class="">Listado de Proyectos</h1>
+  <div class="container mx-auto mt-4 px-0">
+    <app-list-filters (onFilterChange)="filterProjects($event)" />
+  </div>
+  <div class="container mx-auto mt-4 px-0 border shadow row">
+    @for (project of projects; track project.id) {
+    <article class="col-12 px-0">
+      <app-project
+        [project]="project"
+        (projectDeleted)="onProjectDeleted()"
+      ></app-project>
+    </article>
+    } @empty {
+    <article class="col-12 px-0">
+      <p class="text-center pt-3">No se encontraron proyectos.</p>
+    </article>
+    }
+  </div>
+</section>

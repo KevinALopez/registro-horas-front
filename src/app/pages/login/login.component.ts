@@ -5,8 +5,6 @@ import { LoginUsersComponent } from './login-users/login-users.component';
   selector: 'app-login',
   imports: [LoginUsersComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
-export class LoginComponent {
-
-}
+export class LoginComponent {}
