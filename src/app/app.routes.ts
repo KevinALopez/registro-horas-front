@@ -7,6 +7,7 @@ import { CardComponent } from './component/card/card.component';
 import { EditProjectComponent } from './pages/edit-project/edit-project.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
 import { ProjectsListComponent } from './pages/projects-list/projects-list.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -19,5 +20,5 @@ export const routes: Routes = [
   { path: 'users/edit/:id', component: EditUserComponent },
   { path: 'edit-user', component: EditUserComponent },
   { path: 'projects', component: ProjectsListComponent },
-  { path: '**', redirectTo: 'login' },
+  { path: '**', component: NotFoundComponent },
 ];
