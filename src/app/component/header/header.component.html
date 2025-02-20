@@ -8,41 +8,73 @@
         class="header-logo"
       />
     </a>
-
     <!-- Icono de usuario y botón de cerrar sesión -->
     <div class="user-actions">
       <i class="fa-solid fa-user-tie" (click)="toggleModal()"></i>
       <button class="logout-btn" (click)="logout()">Cerrar</button>
 
       <!-- Modal de actualización de contraseña -->
-      <!-- <div class="modal" [@If]="isModalOpen">
+      <div class="modal" [ngClass]="{ 'show-modal': isModalOpen }">
         <div class="modal-content">
           <span class="close" (click)="closeModal()">&times;</span>
           <h2>Actualizar Contraseña</h2>
 
           <form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
             <label for="username">Usuario:</label>
-            <input type="text" id="username" [value]="loggedUser?.username" disabled>
+            <input
+              type="text"
+              id="username"
+              [value]="loggedUser?.username"
+              disabled
+            />
 
             <label for="currentPassword">Contraseña Actual:</label>
-            <input type="password" id="currentPassword" formControlName="currentPassword" placeholder="Ingrese contraseña actual">
-            <small [@If]="passwordForm.get('currentPassword')?.invalid && passwordForm.get('currentPassword')?.touched">
-              La contraseña actual es obligatoria.
+            <input
+              type="password"
+              id="currentPassword"
+              formControlName="currentPassword"
+              placeholder="Ingrese contraseña actual"
+            />
+            <small
+              [@If]="
+                passwordForm.get('currentPassword')?.invalid &&
+                passwordForm.get('currentPassword')?.touched
+              "
+            >
             </small>
 
             <label for="newPassword">Nueva Contraseña:</label>
-            <input type="password" id="newPassword" formControlName="newPassword" placeholder="Ingrese nueva contraseña">
-            <small [@If]="passwordForm.get('newPassword')?.invalid && passwordForm.get('newPassword')?.touched">
-              La nueva contraseña debe tener al menos 8 caracteres y un carácter especial.
+            <input
+              type="password"
+              id="newPassword"
+              formControlName="newPassword"
+              placeholder="Ingrese nueva contraseña"
+            />
+            <small
+              [@If]="
+                passwordForm.get('newPassword')?.invalid &&
+                passwordForm.get('newPassword')?.touched
+              "
+            >
             </small>
 
-            <button class="save-btn" type="submit" [disabled]="passwordForm.invalid">Guardar</button>
+            <button
+              class="save-btn"
+              type="submit"
+              [disabled]="passwordForm.invalid"
+            >
+              Guardar
+            </button>
           </form>
         </div>
       </div>
-    </div>
-  </div>
-</nav>-->
+
+      <!-- Overlay para el fondo oscuro -->
+      <!-- <div
+        class="modal-overlay"
+        [@If]="isModalOpen"
+        (click)="closeModal()"
+      ></div>-->
     </div>
   </div>
 </nav>
