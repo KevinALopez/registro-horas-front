@@ -1,10 +1,10 @@
-import { UsersService } from './../../services/users.service';
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input} from '@angular/core';
 import { HeaderComponent } from '../../component/header/header.component';
 import { FooterComponent } from '../../component/footer/footer.component';
-import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { UsersService } from '../../services/users.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,65 +17,52 @@ export class EditUserComponent {
   editUserForm: FormGroup;
   userService = inject(UsersService)
   router = inject(Router)
-  @Input() userId: number = 0;
+  @Input() userId: string | null = null;
 
   constructor() {
     this.editUserForm = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6),
-      Validators.maxLength(20)]),
-      role: new FormControl('', [Validators.required]),
-      contract: new FormControl('', [Validators.required]),
-    })
+      username: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20),
+        Validators.pattern(/^[a-zA-Z0-9_-]+$/) // Solo letras, números, guion y guion bajo
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/) // Validación estricta de email
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(30),
+        Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/) // Al menos una mayúscula y un número
+      ]),
+      role: new FormControl('', [
+        Validators.required
+      ]),
+      contract: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[1-9]\d*$/) // Solo números positivos (del 1 en adelante)
+      ])
+    });
   }
 
-  async ngOnInit() {
-    try {
-      // Verificar si tenemos un userId válido
-      if (!this.userId) {
-        // Opción 1: Obtener el ID de la URL si es una ruta con parámetros
-        const urlParams = new URLSearchParams(window.location.search);
-        this.userId = parseInt(urlParams.get('id') || '0');
-      }
-
-      console.log('ID del usuario a editar:', this.userId); // Debug
-
-      if (!this.userId) {
-        Swal.fire('Error', 'No se ha especificado un usuario para editar', 'error');
-        this.router.navigateByUrl('/users');
-        return;
-      }
-
-      const user = await this.userService.getById(this.userId);
-      if (!user) {
-        throw new Error('Usuario no encontrado');
-      }
-
-      const { username, email, password, role, contract } = user;
-      this.editUserForm.patchValue({ username, email, role, contract });
-    } catch (error) {
-      console.error('Error al cargar usuario:', error);
-      Swal.fire('Error', 'Error al cargar los datos del usuario', 'error');
-      this.router.navigateByUrl('/users');
-    }
-  }
-  async onSubmit() {
-    try {
-      const userId = await this.userService.updateById(this.userId
-        , this.editUserForm.value);
-      Swal.fire('Edicion', `${this.editUserForm.value.username} editado correctamente`, 'success');
-      this.router.navigateByUrl('/users');
-    }
-    catch (error) {
-      Swal.fire('Edicion', 'ha ocurrido un error. Vuelve a intentarlo mas tarde', 'error');
-    }
-
-  }
-
-  cancel() {
+ async ngOnInit(): Promise<void> {
+    const user = await this.userService.getById(Number(this.userId));
+    const {username, email, password, role, contract} = user!;
+    this.editUserForm.setValue({username, email, password, role, contract});
+ }
+ async onSubmit(): Promise<void> {
+  try {
+    const user = await this.userService.updateById(Number(this.userId), this.editUserForm.value);
+    Swal.fire('Edicion', `Usuario ${user.updatedUser.username} actualizado correctamente`, 'success');
     this.router.navigateByUrl('/users');
+  } catch (error) {
+    Swal.fire('Error', 'Error al actualizar el usuario', 'error');
+
   }
+ }
+ cancel(): void {
+  this.router.navigateByUrl('/users');
+ }
 }
-
-
