@@ -10,7 +10,6 @@ export interface CustomPayload extends JwtPayload {
 }
 
 export const adminGuard: CanActivateFn = (route, state) => {
-
   const router = inject(Router);
 
   const token = localStorage.getItem(environment.tokenName)!;
