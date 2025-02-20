@@ -20,62 +20,76 @@
           <h2>Actualizar Contraseña</h2>
 
           <form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
-            <label for="username">Usuario:</label>
-            <input
-              type="text"
-              id="username"
-              [value]="loggedUser?.username"
-              disabled
-            />
+            <div class="form-group">
+              <label for="username">Usuario:</label>
+              <input
+                type="text"
+                id="username"
+                [value]="loggedUser?.username || 'No hay usuario'"
+                readonly
+                class="form-control"
+              />
+            </div>
 
-            <label for="currentPassword">Contraseña Actual:</label>
-            <input
-              type="password"
-              id="currentPassword"
-              formControlName="currentPassword"
-              placeholder="Ingrese contraseña actual"
-            />
-            <small
-              *ngIf="
-                passwordForm.get('currentPassword')?.invalid &&
-                passwordForm.get('currentPassword')?.touched
-              "
-            >
-              La contraseña actual es requerida
-            </small>
+            <div class="form-group">
+              <label for="currentPassword">Contraseña Actual:</label>
+              <input
+                type="password"
+                id="currentPassword"
+                formControlName="currentPassword"
+                class="form-control"
+                placeholder="Ingrese contraseña actual"
+              />
+              <small
+                class="error-message"
+                [@If]="
+                  passwordForm.get('currentPassword')?.invalid &&
+                  passwordForm.get('currentPassword')?.touched
+                "
+              >
+                La contraseña actual es requerida y debe tener al menos 6
+                caracteres
+              </small>
+            </div>
 
-            <label for="newPassword">Nueva Contraseña:</label>
-            <input
-              type="password"
-              id="newPassword"
-              formControlName="newPassword"
-              placeholder="Ingrese nueva contraseña"
-            />
-            <small
-              [@If]="
-                passwordForm.get('newPassword')?.invalid &&
-                passwordForm.get('newPassword')?.touched
-              "
-            >
-            </small>
+            <div class="form-group">
+              <label for="newPassword">Nueva Contraseña:</label>
+              <input
+                type="password"
+                id="newPassword"
+                formControlName="newPassword"
+                class="form-control"
+                placeholder="Ingrese nueva contraseña"
+              />
+              <small
+                class="error-message"
+                [@If]="
+                  passwordForm.get('newPassword')?.invalid &&
+                  passwordForm.get('newPassword')?.touched
+                "
+              >
+                La nueva contraseña debe tener al menos 8 caracteres, incluir
+                una letra, un número y un carácter especial
+              </small>
+            </div>
 
             <button
               class="save-btn"
               type="submit"
-              [disabled]="passwordForm.invalid"
+              [disabled]="passwordForm.invalid || !loggedUser"
             >
-              Guardar
+              Guardar Cambios
             </button>
           </form>
         </div>
       </div>
 
-      <!-- Overlay para el fondo oscuro -->
+      <!-- Overlay para el fondo oscuro
       <div
         class="modal-overlay"
-        *ngIf="isModalOpen"
+        [@If]="isModalOpen"
         (click)="closeModal()"
-      ></div>
+      ></div>-->
     </div>
   </div>
 </nav>

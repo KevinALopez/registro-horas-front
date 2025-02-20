@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-edit-user',
   imports: [HeaderComponent, FooterComponent, FormsModule, ReactiveFormsModule],
@@ -30,11 +31,34 @@ export class EditUserComponent {
   }
 
   async ngOnInit() {
+    try {
+      // Verificar si tenemos un userId válido
+      if (!this.userId) {
+        // Opción 1: Obtener el ID de la URL si es una ruta con parámetros
+        const urlParams = new URLSearchParams(window.location.search);
+        this.userId = parseInt(urlParams.get('id') || '0');
+      }
 
-    const userId = this.userId
-    const user = await this.userService.getById(this.userId);
-    const { username, email, password, role, contract } = user!;
-    this.editUserForm.setValue({ username, email, password, role, contract });
+      console.log('ID del usuario a editar:', this.userId); // Debug
+
+      if (!this.userId) {
+        Swal.fire('Error', 'No se ha especificado un usuario para editar', 'error');
+        this.router.navigateByUrl('/users');
+        return;
+      }
+
+      const user = await this.userService.getById(this.userId);
+      if (!user) {
+        throw new Error('Usuario no encontrado');
+      }
+
+      const { username, email, password, role, contract } = user;
+      this.editUserForm.patchValue({ username, email, role, contract });
+    } catch (error) {
+      console.error('Error al cargar usuario:', error);
+      Swal.fire('Error', 'Error al cargar los datos del usuario', 'error');
+      this.router.navigateByUrl('/users');
+    }
   }
   async onSubmit() {
     try {

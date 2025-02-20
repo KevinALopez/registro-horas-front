@@ -12,6 +12,9 @@ type LoginBody = {
 type LoginResponse = {
   message: string;
   token?: string;
+  id: number;
+  username: string;
+  // otros campos que el backend devuelva
 };
 
 type RegisterResponse = {
@@ -32,6 +35,9 @@ type DeleteResponse = {
   providedIn: 'root',
 })
 export class UsersService {
+  updatePassword(userId: number, arg1: { currentPassword: string; newPassword: string; }) {
+    throw new Error('Method not implemented.');
+  }
   private http = inject(HttpClient);
   private baseUrl = 'http://localhost:3000/api';
   private loggedUserSubject = new BehaviorSubject<User | null>(null);
@@ -54,7 +60,11 @@ export class UsersService {
       this.http.post<LoginResponse>(`${this.baseUrl}/auth/login`, credentials)
     ).then(response => {
       if (response.token) {
-        const user = { /* map user data */ } as User;
+        const user: User = {
+          id: response.id,
+          username: response.username,
+        };
+        console.log('Usuario guardado:', user);
         this.loggedUserSubject.next(user);
         localStorage.setItem('user', JSON.stringify(user));
       }
