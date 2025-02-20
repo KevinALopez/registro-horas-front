@@ -1,0 +1,67 @@
+<div class="container ">
+    <h2 class="text-center">Añadir Projecto</h2>
+    <div class="row">
+        <div class="col-11 col-sm-12 col-md-6 col-xl-4 mx-auto p-4 border rounded shadow-sm bg-light">
+            <form [formGroup]="postForm" (ngSubmit)="setDataPost()">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Nombre:</label>
+                    <input class="form-control" id="name" formControlName="name" type="text" />
+                    @if(validate('name')) {
+                    <p class="text-danger">*minimo 3 caracteres</p>
+                }
+               
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Descripcion:</label>
+                    <textarea class="form-control" id="description" formControlName="description"></textarea>
+                    @if(validate('description')) {
+                    <p class="text-danger">*minimo 3 caracteres</p>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="start">Fecha Start:</label>
+                    <input class="form-control" id="start" formControlName="start" type="datetime-local" />
+                    @if(validate('start')) {
+                        <p class="text-danger">*el campo es obligatorio</p>
+                        }
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="end">Fecha End:</label>
+                    <input class="form-control" id="end" formControlName="end" type="datetime-local" />
+                    @if(validate('end')) {
+                        <p class="text-danger">*el campo es obligatorio</p>
+                        }
+                </div>
+            
+                <div class="mb-3">
+                    <label class="form-label" for="status">Estado:</label>
+                    <select class="form-control" class="form-control" id="status" formControlName="status">
+                        <option selected value="Activo" >Activo</option>
+                        <option disabled selected value="Inactivo" >Inactivo</option>
+                        <option disabled selected value="Pendiente" >Pendiente</option>
+                    </select>
+                    @if(validate('status')) {
+                    <p class="text-danger">*este campo es obligatorio</p>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="estimatedHours">Horas estimadas:</label>
+                    <input class="form-control" id="estimatedHours" formControlName="estimatedHours" type="text" />
+                    @if(validate('estimatedHours')) {
+                    <p class="text-danger">*solo admite numeros > 0 </p>
+                }
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="hoursWorked">Horas trabajadas:</label>
+                    <input class="form-control" id="hoursWorked" formControlName="workedHours" type="text" />
+                    @if(validate('workedHours')) {
+                    <p class="text-danger">*solo admite numeros > 0</p>
+                }
+                </div>
+
+                <button class="btn btn-primary" type="submit" >Añadir</button>
+            </form>
+        </div>
+    </div>
+
+</div>

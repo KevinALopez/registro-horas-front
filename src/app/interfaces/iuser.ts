@@ -1,7 +1,9 @@
 export interface IUser {
-  username: string;
-  email: string;
-  password?: string;
-  role: string;
-  contract: string;
+    id?:number;
+    username:string;
+    email:string;
+    password?:string;
+    role:string;
+    contract:string;
+
 }
