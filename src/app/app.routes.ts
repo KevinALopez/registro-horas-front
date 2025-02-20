@@ -5,6 +5,7 @@ import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { FormCreateProjectComponent } from './pages/form-create-project/form-create-project.component';
 import { CardComponent } from './component/card/card.component';
 import { EditProjectComponent } from './pages/edit-project/edit-project.component';
+import { UsersListComponent } from './pages/users-list/users-list.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -14,7 +15,9 @@ export const routes: Routes = [
   { path: "admin/users/:id", component: CardComponent },
   { path: 'edit-user', component: EditUserComponent },
   { path: 'projects/edit-project/:projectId', component: EditProjectComponent },
+  { path: 'users', component: UsersListComponent },
   { path: '**', redirectTo: 'login' },
+
 
 ]
 
