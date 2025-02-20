@@ -6,6 +6,8 @@ import { FormCreateProjectComponent } from './pages/form-create-project/form-cre
 import { CardComponent } from './component/card/card.component';
 import { EditProjectComponent } from './pages/edit-project/edit-project.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
+import { authGuard } from './guards/auth.guard';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -14,7 +16,7 @@ export const routes: Routes = [
   { path: "admin/projects/create", component: FormCreateProjectComponent },
   { path: "admin/users/:id", component: CardComponent },
   { path: 'edit-user', component: EditUserComponent },
-  { path: 'projects/edit-project/:projectId', component: EditProjectComponent },
+  { path: 'projects/edit-project/:projectId', component: EditProjectComponent, canActivate: [authGuard, adminGuard] },
   { path: 'users', component: UsersListComponent },
   { path: '**', redirectTo: 'login' },
 
