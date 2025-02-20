@@ -42,4 +42,19 @@ export class ProjectComponent {
       Swal.fire('Eliminacion de un proyecto', message, 'error');
     }
   }
+
+  getProjectStatusFormatted() {
+    if (this.project.status === 'active') return 'Activo';
+    if (this.project.status === 'cancel') return 'Cancelado';
+
+    return 'Terminado';
+  }
+
+  getProjectStatusClass() {
+    const baseClass = 'text-white px-2 py-1 rounded';
+    if (this.project.status === 'active') return `bg-primary ${baseClass}`;
+    if (this.project.status === 'cancel') return `bg-danger ${baseClass}`;
+
+    return `bg-success ${baseClass}`;
+  }
 }
