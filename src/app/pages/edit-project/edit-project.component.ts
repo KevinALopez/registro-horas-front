@@ -8,16 +8,6 @@ import { ProjectsService } from '../../services/projects.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
-type formData = {
-  name: string;
-  description: string;
-  start: string;
-  end: string;
-  status: string;
-  estimated_hours: number;
-  worked_hours: number;
-}
-
 @Component({
   selector: 'app-edit-project',
   imports: [HeaderComponent, NavSidebarComponent, FooterComponent, ReactiveFormsModule],
@@ -27,7 +17,7 @@ type formData = {
 export class EditProjectComponent {
 
   editProjectForm: FormGroup;
-  arrProjects: { data: IProject[] } = { data: [] };
+  // arrProjects: { data: IProject[] } = { data: [] };
   projectsService = inject(ProjectsService);
   @Input() projectId!: number;
   router = inject(Router);
@@ -42,13 +32,14 @@ export class EditProjectComponent {
       estimatedHours: new FormControl(),
       workedHours: new FormControl()
     }
-    )
+    );
   }
   async ngOnInit() {
     // this.arrProjects = await this.projectsService.getAll();//TODO: crear funcion para llenar selector de status 
     const project = await this.projectsService.getById(this.projectId);
 
-    const { name, description, start, end, status, estimatedHours, workedHours } = project!;
+    const { name, description, start, end, status, estimatedHours, workedHours } = project;
+
     this.editProjectForm.setValue({ name, description, start, end, status, estimatedHours, workedHours });
   }
 
