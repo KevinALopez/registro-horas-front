@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { lastValueFrom, BehaviorSubject } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { IUser } from '../interfaces/iuser';
 import { User } from '../interfaces/user.interface';
 
@@ -44,36 +44,11 @@ export class UsersService {
 
   private http = inject(HttpClient);
   private baseUrl = 'http://localhost:3000/api';
-  private loggedUserSubject = new BehaviorSubject<User | null>(null);
-  loggedUser$ = this.loggedUserSubject.asObservable();
-
-  constructor() {
-    // Intentar recuperar usuario del localStorage al iniciar
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      this.loggedUserSubject.next(JSON.parse(savedUser));
-    }
-  }
-
-  getLoggedUser(): User | null {
-    return this.loggedUserSubject.value;
-  }
 
   login(credentials: LoginBody) {
     return lastValueFrom(
       this.http.post<LoginResponse>(`${this.baseUrl}/auth/login`, credentials)
-    ).then((response) => {
-      if (response.token) {
-        const user: User = {
-          id: response.id,
-          username: response.username,
-        };
-        console.log('Usuario guardado:', user);
-        this.loggedUserSubject.next(user);
-        localStorage.setItem('user', JSON.stringify(user));
-      }
-      return response;
-    });
+    );
   }
 
   register(user: IUser) {
@@ -93,28 +68,12 @@ export class UsersService {
   updateById(id: number, updatedUser: IUser | User) {
     return lastValueFrom(
       this.http.put<UpdateResponse>(`${this.baseUrl}/users/${id}`, updatedUser)
-    ).then((response) => {
-      if (this.loggedUserSubject.value?.id === id) {
-        this.loggedUserSubject.next({
-          ...this.loggedUserSubject.value,
-          ...updatedUser,
-        });
-      }
-      return response;
-    });
+    );
   }
 
   deleteById(id: number) {
     return lastValueFrom(
       this.http.delete<DeleteResponse>(`${this.baseUrl}/users/${id}`)
     );
-  }
-
-  logout(): Promise<void> {
-    return new Promise((resolve) => {
-      localStorage.removeItem('user');
-      this.loggedUserSubject.next(null);
-      resolve();
-    });
   }
 }
