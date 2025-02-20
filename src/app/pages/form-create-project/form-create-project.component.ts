@@ -1,17 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { ProjectsService} from '../../services/projects.service';
 import { Form, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NavSidebarComponent } from "../../component/nav-sidebar/nav-sidebar.component";
+import { HeaderComponent } from "../../component/header/header.component";
 
 
 @Component({
   selector: 'app-form-create-project',
-  imports: [FormsModule,ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, NavSidebarComponent, HeaderComponent],
   templateUrl: './form-create-project.component.html',
   styleUrl: './form-create-project.component.css'
 })
 export class FormCreateProjectComponent {
   projectService = inject(ProjectsService);
-
   postForm: FormGroup;
 
   constructor() { 
@@ -45,7 +46,7 @@ export class FormCreateProjectComponent {
     },[])
   }
   setDataPost() {
-    //this.projectService.insertProject(this.postForm.value);
+    this.projectService.createNewProject(this.postForm.value);
     alert("Post insertado correctamente");
     this.postForm.reset();
 
