@@ -1,0 +1,60 @@
+<app-header></app-header>
+<app-nav-sidebar></app-nav-sidebar>
+<div class="my-5 pt-5">
+    <div class="container">
+        <div class="col-md-8 col-lg-7 offset-2 offset-md-3 offset-lg-4">
+            <h2 class="mt-4">Editar Proyecto</h2>
+            <form [formGroup]="editProjectForm" (ngSubmit)="onSubmit()" class="border rounded p-4">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre de proyecto</label>
+                    <input type="text" id="name" class="form-control" formControlName="name" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripción</label>
+                    <input type="text" id="description" class="form-control" formControlName="description" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="start" class="form-label">Inicio proyecto</label>
+                    <input type="datetime-local" id="start" class="form-control" formControlName="start" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="end" class="form-label">Fin de proyecto</label>
+                    <input type="datetime-local" id="end" class="form-control" formControlName="end" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select id="status" class="form-select" formControlName="status">
+                        <!-- las options se llenarán con lo que viene del back de la columna status -->
+                        <option value="admin">Admin</option>
+                        <option value="estandar">Estandar</option>
+                        <!-- @for (project of [arrProjects]; track project) {
+                        <option [value]="project">{{project}}</option>
+                        } -->
+
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="estimatedHours" class="form-label">Horas estimadas</label>
+                    <input type="number" id="estimatedHours" class="form-control" formControlName="estimatedHours" />
+                </div>
+                <div class="mb-3">
+                    <label for="workedHours" class="form-label">Horas trabajadas</label>
+                    <input type="number" id="workedHours" class="form-control" formControlName="workedHours" />
+                </div>
+
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <!-- <input type="submit" value="Actualizar" class="btn btn-primary"> -->
+                    <button type="button" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
