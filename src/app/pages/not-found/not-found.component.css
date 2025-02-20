@@ -1,0 +1,125 @@
+.not-found-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/images/-w3UOCHSTG21jOEzaVCcfw.webp");
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.content-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.error-code {
+  font-size: 120px;
+  color: #2b0953;
+  margin: 0;
+  font-weight: bold;
+  line-height: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error-divider {
+  height: 4px;
+  width: 60px;
+  background-color: #726dad;
+  margin: 20px auto;
+  border-radius: 2px;
+}
+
+.error-message {
+  font-size: 32px;
+  color: #2b0953;
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+.error-description {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.action-buttons {
+  margin-top: 30px;
+}
+
+.return-btn {
+  background-color: #2b0953;
+  color: #f0ede6;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.return-btn:hover {
+  background-color: #726dad;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 9, 83, 0.2);
+}
+
+.return-btn:active {
+  transform: translateY(0);
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .error-code {
+    font-size: 100px;
+  }
+
+  .error-message {
+    font-size: 24px;
+  }
+
+  .error-description {
+    font-size: 16px;
+  }
+
+  .content-box {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-code {
+    font-size: 80px;
+  }
+
+  .error-message {
+    font-size: 20px;
+  }
+
+  .content-box {
+    padding: 20px 15px;
+  }
+}
