@@ -3,7 +3,8 @@ import { HttpInterceptorFn } from '@angular/common/http';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   // For testing
 
-  const token = "yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0MDA1OTk0OH0.r7tzmrEsuRptKUKKy7Ktml50Hok42QeNrE7nJ2RQ7d4";
+  const token = localStorage.getItem('store_token');
+
   if (token) {
     const reqToken = req.clone({
       setHeaders: {
@@ -14,5 +15,4 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   }
 
   return next(req);
-
-}
+};

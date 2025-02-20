@@ -35,9 +35,13 @@ type DeleteResponse = {
   providedIn: 'root',
 })
 export class UsersService {
-  updatePassword(userId: number, arg1: { currentPassword: string; newPassword: string; }) {
+  updatePassword(
+    userId: number,
+    arg1: { currentPassword: string; newPassword: string }
+  ) {
     throw new Error('Method not implemented.');
   }
+
   private http = inject(HttpClient);
   private baseUrl = 'http://localhost:3000/api';
   private loggedUserSubject = new BehaviorSubject<User | null>(null);
@@ -58,7 +62,7 @@ export class UsersService {
   login(credentials: LoginBody) {
     return lastValueFrom(
       this.http.post<LoginResponse>(`${this.baseUrl}/auth/login`, credentials)
-    ).then(response => {
+    ).then((response) => {
       if (response.token) {
         const user: User = {
           id: response.id,
@@ -89,9 +93,12 @@ export class UsersService {
   updateById(id: number, updatedUser: IUser | User) {
     return lastValueFrom(
       this.http.put<UpdateResponse>(`${this.baseUrl}/users/${id}`, updatedUser)
-    ).then(response => {
+    ).then((response) => {
       if (this.loggedUserSubject.value?.id === id) {
-        this.loggedUserSubject.next({ ...this.loggedUserSubject.value, ...updatedUser });
+        this.loggedUserSubject.next({
+          ...this.loggedUserSubject.value,
+          ...updatedUser,
+        });
       }
       return response;
     });
