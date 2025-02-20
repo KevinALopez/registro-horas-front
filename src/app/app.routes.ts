@@ -12,6 +12,7 @@ export const routes: Routes = [
   {path: 'edit-user', component: EditUserComponent},
   { path: "admin/projects/create", component: FormCreateProjectComponent },
   { path: "admin/users/:id", component: CardComponent },
+  { path: 'users/edit/:id', component: EditUserComponent },
   { path: '**', redirectTo: 'login' },
 
 ]
