@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
@@ -15,6 +16,7 @@ import { User } from './../../interfaces/user.interface';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  router = inject(Router) /* kevin B */
   isModalOpen = false;
   private http = inject(HttpClient);
   private usersService = inject(UsersService);
@@ -117,18 +119,23 @@ export class HeaderComponent {
     }
   }
 
-  async logout() {
-    try {
-      await this.usersService.logout();
-      window.location.href = '/login';
-    } catch (error) {
-      console.error('Error al cerrar sesión:', error);
-      await Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Ocurrió un error al cerrar sesión'
-      });
-    }
+  /*   async logout() {
+      try {
+        await this.usersService.logout();
+        window.location.href = '/login';
+      } catch (error) {
+        console.error('Error al cerrar sesión:', error);
+        await Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Ocurrió un error al cerrar sesión'
+        }); */
+  /* }
+    } */
+
+  logout() {  /* kevinb */
+    localStorage.removeItem('store_token')
+    this.router.navigate(['/login'])
   }
 }
 

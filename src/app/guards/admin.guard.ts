@@ -10,18 +10,26 @@ export interface CustomPayload extends JwtPayload {
 }
 
 export const adminGuard: CanActivateFn = (route, state) => {
-
-  const router = inject(Router);
-
-  const token = localStorage.getItem(environment.tokenName)!;
-
-  const payload = jwtDecode<CustomPayload>(token);
-
-  if (payload.userRole !== 'admin') {
-    Swal.fire('Sin autorización', 'Debes ser usuario admin', 'warning');
-    router.navigateByUrl('/projects');
-    return false;
+  let router = inject(Router);
+  if (localStorage.getItem('store_token')) {
+    return true;
+  } else {
+    Swal.fire('No tienes permisos para entrar aqui')
+    router.navigate(['/home']);
+    return false
   }
 
-  return true;
+  /*   const router = inject(Router);
+  
+    const token = localStorage.getItem('store_token')!;
+  
+    const payload = jwtDecode<CustomPayload>(token);
+  
+    if (payload.userRole !== 'admin') {
+      Swal.fire('Sin autorización', 'Debes ser usuario admin', 'warning');
+      router.navigateByUrl('/home');
+      return false;
+    }
+  
+    return true; */
 };

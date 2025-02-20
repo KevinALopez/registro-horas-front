@@ -25,8 +25,8 @@ export class LoginUsersComponent {
     try {
       const response = await this.UsersService.login(this.loginForm.value);
       Swal.fire('login', 'login Correcto', 'success')
-      localStorage.setItem('store_token', response.message);
-      this.router.navigateByUrl('/home');
+      localStorage.setItem('store_token', response.token!);
+      this.router.navigateByUrl('home');
 
     } catch (error) {
       Swal.fire('login', 'Usuario y/o Contrasena incorrecta', 'error');
