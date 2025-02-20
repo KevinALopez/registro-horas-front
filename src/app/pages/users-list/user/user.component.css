@@ -1,0 +1,11 @@
+.user {
+    margin: auto;
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 0.2rem 0.4rem;
+    }
+}
