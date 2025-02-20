@@ -1,60 +1,65 @@
-<div class="col-12 col-sm-3 col-lg-2 px-sm-2 px-0 d-flex sticky-top vh-100 overflow-auto navAside">
-    <div
-        class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
-        <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <span class="fs-5">C<span class="d-none d-sm-inline">ronos</span></span>
-        </a>
-        <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
-            id="menu">
-            <li class="nav-item">
-                <a href="#" class="nav-link px-sm-0 px-2 text-white">
-                    <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Inicio</span>
-                </a>
-            </li>
-            <li>
-                <a href="#horasRegistradas" class="nav-link px-sm-0 px-2 text-white">
-                    <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-sm-inline">Horas registradas</span></a>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1 text-white" id="dropdown"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fs-5 bi-bootstrap"></i><span class="ms-1 d-none d-sm-inline">Usuarios</span>
-                </a>
-                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
-                    <li><a class="dropdown-item" href="">Lista de usuarios</a></li>
-                    <li><a class="dropdown-item" href="">Añadir usuario</a></li>
+<div class="sidebar">
 
-
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="nav-link dropdown-toggle px-sm-0 px-1 text-white" id="dropdown"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fs-5 bi-bootstrap"></i><span class="ms-1 d-none d-sm-inline">Proyectos</span>
-                </a>
-                <ul class="dropdown-menu  text-small shadow " aria-labelledby="dropdown">
-                    <li><a class="dropdown-item" href="#">Lista de proyectos</a></li>
-                    <li><a class="dropdown-item" href="#">Añadir proyecto</a></li>
-
-                </ul>
-            </li>
-
-        </ul>
-        <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="hugenerd" width="28" height="28" class="rounded-circle">
-                <span class="d-none d-sm-inline mx-1">Joe</span>
+    <nav class="flex-column">
+        <h2>
+            <a class="nav-link" href="#">
+                <span class="icon">
+                    <i class="fa-brands fa-slack"></i>
+                </span>
+                <span class="description">
+                    <h3>Cronos</h3>
+                </span>
             </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="#"></a></li>
-              
-                <li><a class="dropdown-item" href="#">Mi perfil</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-            </ul>
+        </h2>
+        <a class="nav-link" href="#">
+            <span class="icon">
+                <i class="fa-solid fa-play"></i>
+            </span>
+            <span class="description">Inicio</span>
+        </a>
+        <a class="nav-link" href="#">
+            <span class="icon">
+                <i class="fa-solid fa-clock"></i>
+            </span>
+            <span class="description">Horas registradas</span>
+        </a>
+        <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenuUsers" aria-expanded="false"
+            aria-controls="submenuUsers">
+            <span class="icon">
+                <i class="fa-regular fa-address-book"></i>
+            </span>
+            <span class="description">Usuarios <i class="fa-solid fa-caret-down"></i></span>
+        </a>
+
+        <!-- submenu usuarios -->
+        <div class="sub-menu collapse" id="submenuUsers">
+            <a class="nav-link" href="#">
+                <span class="description">Lista de usuarios</span>
+            </a>
+            <a class="nav-link" href="#">
+                <span class="description">Añadir usuario</span>
+            </a>
+
+
         </div>
-    </div>
+
+        <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenuProjects" aria-expanded="false"
+            aria-controls="submenuProjects">
+            <span class="icon">
+                <i class="fa-solid fa-diagram-project"></i>
+            </span>
+            <span class="description">Proyectos <i class="fa-solid fa-caret-down"></i></span>
+        </a>
+
+        <!-- submenu proyectos-->
+        <div class="sub-menu collapse" id="submenuProjects">
+            <a class="nav-link" href="#">
+                <span class="description">Lista de proyectos</span>
+            </a>
+            <a class="nav-link" href="#">
+                <span class="description">Añadir proyecto</span>
+            </a>
+
+        </div>
+    </nav>
 </div>
