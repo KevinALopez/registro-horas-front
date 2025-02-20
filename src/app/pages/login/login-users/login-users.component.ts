@@ -3,10 +3,11 @@ import Swal from 'sweetalert2';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ButtonComponent } from "../../../components/button/button.component";
 
 @Component({
   selector: 'app-login-users',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ButtonComponent],
   templateUrl: './login-users.component.html',
   styleUrl: './login-users.component.css'
 })
