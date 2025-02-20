@@ -1,8 +1,13 @@
 <div
   class="container d-flex flex-row gap-2 justify-content-between border p-3 project"
 >
-  <h1>{{ project.name }}</h1>
-  <div class="d-flex gap-1">
+  <div class="d-flex flex-column align-items-start">
+    <h1>{{ project.name }}</h1>
+    <span [class]="getProjectStatusClass()">{{
+      getProjectStatusFormatted()
+    }}</span>
+  </div>
+  <div class="d-flex gap-1 align-items-center options">
     <button class="btn btn-primary">Editar</button>
     <button class="btn btn-danger" (click)="deleteProject(project.id!)">
       Eliminar
