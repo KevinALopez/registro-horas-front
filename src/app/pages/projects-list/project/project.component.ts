@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { IProject } from '../../../interfaces/iproject';
 import Swal from 'sweetalert2';
 import { ProjectsService } from '../../../services/projects.service';
@@ -11,6 +11,7 @@ import { ProjectsService } from '../../../services/projects.service';
 })
 export class ProjectComponent {
   @Input() project!: IProject;
+  @Output() projectDeleted = new EventEmitter();
 
   projectService = inject(ProjectsService);
 
@@ -28,13 +29,15 @@ export class ProjectComponent {
 
       if (!userInput.isConfirmed) return;
 
-      const deleteResponse = await this.projectService.deleteById(projectId);
+      await this.projectService.deleteById(projectId);
 
       Swal.fire(
         'Eliminacion de un proyecto',
         'El proyecto fue eliminado con exito.',
         'success'
       );
+
+      this.projectDeleted.emit();
     } catch ({ message }: any) {
       Swal.fire('Eliminacion de un proyecto', message, 'error');
     }
