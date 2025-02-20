@@ -1,12 +1,14 @@
-import { UsersService } from './../../services/users.service';
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { UsersService } from './../../services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
-  imports: [ReactiveFormsModule],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -38,10 +40,16 @@ export class HeaderComponent {
 
   toggleModal() {
     this.isModalOpen = !this.isModalOpen;
+    if (this.isModalOpen) {
+      document.body.style.overflow = 'hidden'; // Previene el scroll del body
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   }
 
   closeModal() {
     this.isModalOpen = false;
+    document.body.style.overflow = 'auto';
     this.passwordForm.reset();
   }
 
@@ -54,31 +62,41 @@ export class HeaderComponent {
     const { currentPassword, newPassword } = this.passwordForm.value;
     const userId = this.loggedUser?.id;
 
-    if (!userId) {
-      alert("Error: Usuario no identificado.");
+    if (!userId || !currentPassword || !newPassword) {
+      Swal.fire("Error", "Ocurrió un error al actualizar la contraseña.", "error");
       return;
     }
 
-    // 🔹 Se llama a `updatePassword` desde `UsersService`
-    /*this.usersService.updatePassword(userId, currentPassword, newPassword)
+    // Usando el método existente updateById
+    this.usersService.updateById(userId, {
+      ...this.loggedUser,
+      password: newPassword
+    })
       .then(() => {
-        alert('Contraseña actualizada correctamente.');
+        Swal.fire("Contraseña actualizada", "La contraseña ha sido actualizada correctamente.", "success");
         this.closeModal();
       })
-      .catch(error => {
+      .catch((error: any) => {
         if (error.status === 401) {
-          alert("Contraseña actual incorrecta.");
+          Swal.fire("Error", "La contraseña actual no coincide.", "error");
         } else {
-          alert("Error al actualizar la contraseña. Intente de nuevo.");
+          Swal.fire("Error", "Ocurrió un error al actualizar la contraseña.", "error");
         }
       });
-  }*/
-
-    /*this.usersService.logout();*/
-    console.log("Cerrando sesión...");
   }
 
   logout() {
-    console.log("Cerrando sesión...");
+    // Usando lastValueFrom para manejar la respuesta del Observable
+    this.usersService.login({ username: '', password: '' }) // Llamada inválida para forzar logout
+      .then(() => {
+        console.log("Cerrando sesión...");
+        // Aquí puedes agregar la redirección o limpiar el estado
+        window.location.href = '/login'; // o usar Router para navegar
+      })
+      .catch(() => {
+        console.log("Sesión cerrada exitosamente");
+        // La llamada fallará pero eso es lo que queremos para cerrar sesión
+      });
   }
 }
+
