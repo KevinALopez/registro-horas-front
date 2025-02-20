@@ -4,17 +4,8 @@
   <h1 class="">{{ project.name }}</h1>
   <div class="d-flex gap-1">
     <button class="btn btn-primary">Editar</button>
-    <button class="btn btn-danger">Eliminar</button>
+    <button class="btn btn-danger" (click)="deleteProject(project.id!)">
+      Eliminar
+    </button>
   </div>
 </div>
-
-<!-- {
-    "id": 6,
-    "name": "Project F",
-    "description": "Security Audit",
-    "start": "2024-06-20T07:15:00.000Z",
-    "end": "2024-12-20T17:15:00.000Z",
-    "status": "cancel",
-    "estimated_hours": "100.00",
-    "worked_hours": "10.00"
-  } -->
