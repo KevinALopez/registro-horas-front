@@ -1,0 +1,10 @@
+header {
+  background-image: url("/images/-w3UOCHSTG21jOEzaVCcfw.webp");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}

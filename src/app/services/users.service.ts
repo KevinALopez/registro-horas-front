@@ -35,13 +35,6 @@ type DeleteResponse = {
   providedIn: 'root',
 })
 export class UsersService {
-  updatePassword(
-    userId: number,
-    arg1: { currentPassword: string; newPassword: string }
-  ) {
-    throw new Error('Method not implemented.');
-  }
-
   private http = inject(HttpClient);
   private baseUrl = 'http://localhost:3000/api';
 

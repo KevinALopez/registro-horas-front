@@ -1,7 +1,7 @@
 import { IProject } from './../../interfaces/iproject';
 import { Component, inject, Input } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
-import { NavSidebarComponent } from '../../components/nav-sidebar/nav-sidebar.component';
+import { NavSidebarComponent } from '../../components/header/nav-sidebar/nav-sidebar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProjectsService } from '../../services/projects.service';

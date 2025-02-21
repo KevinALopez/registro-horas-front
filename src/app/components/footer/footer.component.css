@@ -1,10 +1,8 @@
 /* Estilos del footer */
 .custom-footer {
-  background-color: #02094f;
   text-align: center;
   padding: 0.5rem 0;
   font-size: 0.875rem;
-  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -29,24 +27,6 @@
   font-weight: bold;
   font-size: 0.875rem;
   margin-bottom: 0.3125rem;
-  color: white;
-}
-
-/* Estilos de los iconos */
-.social-icons {
-  display: flex;
-  gap: 0.9375rem;
-}
-
-/* Íconos de redes sociales */
-.social-icons a {
-  color: #2b0953;
-  font-size: 1.25rem;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-/* Efecto hover: aumenta el tamaño de los iconos */
-.social-icons a:hover {
-  transform: scale(1.8);
-  color: #726dad;
+  color: black;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }

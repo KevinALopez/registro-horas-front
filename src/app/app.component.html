@@ -1,12 +1,13 @@
 <!-- Inicio Header -->
 <header>
+  @if(isLoggedIn){
   <app-header></app-header>
+  }
 </header>
 <!-- Fin Header -->
 
 <!-- Inicio Main -->
 <main>
-  <app-nav-sidebar></app-nav-sidebar>
   <router-outlet />
 </main>
 <!-- Fin Main -->

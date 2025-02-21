@@ -1,91 +1,17 @@
-<nav class="navbar navbar-expand-lg custom-navbar">
-  <div class="container-fluid">
-    <!-- Logo -->
-    <a class="navbar-brand" href="#">
+<nav class="custom-navbar container px-3">
+  <div class="d-flex justify-content-between align-items-center py-1">
+    <a [routerLink]="['/home']">
       <img
         src="/images/a-clock-that-has-a-watching-eye-in-the-center (1).png"
         alt="Logo"
-        class="header-logo"
       />
     </a>
-    <!-- Icono de usuario y botón de cerrar sesión -->
-    <div class="user-actions">
-      <i class="fa-solid fa-user-tie" (click)="toggleModal()"></i>
-      <button class="logout-btn" (click)="logout()">Cerrar</button>
-
-      <!-- Modal de actualización de contraseña -->
-      <!-- <div class="modal" [ngClass]="{ 'show-modal': isModalOpen }">
-        <div class="modal-content">
-          <span class="close" (click)="closeModal()">&times;</span>
-          <h2>Actualizar Contraseña</h2>
-
-          <form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
-            <div class="form-group">
-              <label for="username">Usuario:</label>
-              <input
-                type="text"
-                id="username"
-                [value]="loggedUser?.username || 'No hay usuario'"
-                readonly
-                class="form-control"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="currentPassword">Contraseña Actual:</label>
-              <input
-                type="password"
-                id="currentPassword"
-                formControlName="currentPassword"
-                class="form-control"
-                placeholder="Ingrese contraseña actual"
-              />
-              <small
-                class="error-message"
-                [@If]="
-                  passwordForm.get('currentPassword')?.invalid &&
-                  passwordForm.get('currentPassword')?.touched
-                "
-              >
-              </small>
-            </div>
-
-            <div class="form-group">
-              <label for="newPassword">Nueva Contraseña:</label>
-              <input
-                type="password"
-                id="newPassword"
-                formControlName="newPassword"
-                class="form-control"
-                placeholder="Ingrese nueva contraseña"
-              />
-              <small
-                class="error-message"
-                [@If]="
-                  passwordForm.get('newPassword')?.invalid &&
-                  passwordForm.get('newPassword')?.touched
-                "
-              >
-              </small>
-            </div>
-
-            <button
-              class="save-btn"
-              type="submit"
-              [disabled]="passwordForm.invalid || !loggedUser"
-            >
-              Guardar Cambios
-            </button>
-          </form>
-        </div>
-      </div> -->
-
-      <!-- Overlay para el fondo oscuro
-      <div
-        class="modal-overlay"
-        [@If]="isModalOpen"
-        (click)="closeModal()"
-      ></div>-->
-    </div>
+    <button class="btn btn-light" (click)="logout()">Cerrar Session</button>
+    <i (click)="openSideNavbar()" class="fa-solid fa-bars"></i>
   </div>
+  <app-nav-sidebar
+    [displaySideNavbar]="isNavSidebarOpen"
+    (onCloseSideNavbar)="closeSideNavbar()"
+    (onLogout)="logout()"
+  ></app-nav-sidebar>
 </nav>

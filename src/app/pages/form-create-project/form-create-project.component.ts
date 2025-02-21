@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NavSidebarComponent } from '../../components/nav-sidebar/nav-sidebar.component';
+import { NavSidebarComponent } from '../../components/header/nav-sidebar/nav-sidebar.component';
 import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
