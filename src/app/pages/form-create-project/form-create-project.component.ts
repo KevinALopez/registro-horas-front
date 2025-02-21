@@ -10,6 +10,8 @@ import {
 } from '@angular/forms';
 import { NavSidebarComponent } from '../../components/header/nav-sidebar/nav-sidebar.component';
 import { HeaderComponent } from '../../components/header/header.component';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-form-create-project',
@@ -52,10 +54,14 @@ export class FormCreateProjectComponent {
       []
     );
   }
-  setDataPost() {
-    this.projectService.createNewProject(this.postForm.value);
-    alert('Post insertado correctamente');
-    this.postForm.reset();
+  async setDataPost() {
+    try {
+      const project = await this.projectService.createNewProject(this.postForm.value);
+      alert("Proyecto creado con exito");
+      this.postForm.reset();
+    } catch (error) {
+      Swal.fire("Error", "Error al crear el proyecto", "error");
+    }
   }
   //validacion
   validate(campo: string) {

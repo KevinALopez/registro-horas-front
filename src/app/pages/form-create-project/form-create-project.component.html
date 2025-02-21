@@ -11,7 +11,6 @@
                     @if(validate('name')) {
                     <p class="text-danger">*minimo 3 caracteres</p>
                     }
-
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="description">Descripcion:</label>
@@ -39,8 +38,8 @@
                     <label class="form-label" for="status">Estado:</label>
                     <select class="form-control" class="form-control" id="status" formControlName="status">
                         <option value="Activo">Activo</option>
-                        <option disabled value="Inactivo">Inactivo</option>
-                        <option disabled value="Pendiente">Pendiente</option>
+                        <option disabled value="Inactivo">Terminado</option>
+                        <option disabled value="Pendiente">Cancelado</option>
                     </select>
                     @if(validate('status')) {
                     <p class="text-danger">*este campo es obligatorio</p>
