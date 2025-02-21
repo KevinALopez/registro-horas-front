@@ -9,18 +9,20 @@ import { EditProjectComponent } from './pages/edit-project/edit-project.componen
 import { UsersListComponent } from './pages/users-list/users-list.component';
 import { ProjectsListComponent } from './pages/projects-list/projects-list.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { EditPasswordComponent } from './pages/edit-password/edit-password.component';
+import { authGuard } from './guards/auth.guard';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: "admin/projects/create", component: FormCreateProjectComponent },
-  { path: "admin/users/:id", component: CardComponent },
-  { path: 'projects/edit/:projectId', component: EditProjectComponent },
-  { path: 'users', component: UsersListComponent },
-  { path: 'edit-user', component: EditUserComponent },
-  { path: 'projects', component: ProjectsListComponent },
-  { path: 'edit-password', component: EditPasswordComponent },
-  { path: '**', component: NotFoundComponent },
+  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
+  { path: 'admin/projects/create', component: FormCreateProjectComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'admin/users/:id', component: CardComponent, canActivate: [authGuard, adminGuard] },
+
+  { path: 'users', component: UsersListComponent, canActivate: [authGuard] },
+  { path: 'users/edit/:id', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'edit-user', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'projects', component: ProjectsListComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'projects/edit/:projectId', component: EditProjectComponent, canActivate: [authGuard, adminGuard] },
+  { path: '**', component: NotFoundComponent, canActivate: [authGuard] },
 ];

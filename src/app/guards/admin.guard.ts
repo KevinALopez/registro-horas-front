@@ -1,24 +1,24 @@
 import { CanActivateFn, Router } from '@angular/router';
-import { environment } from '../../app/environments/environment';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import Swal from 'sweetalert2';
 import { inject } from '@angular/core';
 
 export interface CustomPayload extends JwtPayload {
-  userId: string;
-  userRole: string;
+  username: string;
+  role: string;
 }
 
-export const adminGuard: CanActivateFn = (route, state) => {
+export const adminGuard: CanActivateFn = async (route, state) => {
+
   const router = inject(Router);
 
-  const token = localStorage.getItem(environment.tokenName)!;
+  const token = localStorage.getItem('store_token')!;
 
   const payload = jwtDecode<CustomPayload>(token);
 
-  if (payload.userRole !== 'admin') {
-    Swal.fire('Sin autorización', 'Debes ser usuario admin', 'warning');
-    router.navigateByUrl('/projects');
+  if (payload.role !== 'admin') {
+    await Swal.fire('Sin autorización', 'Debes ser usuario admin', 'warning');
+    router.navigateByUrl('/home');
     return false;
   }
 

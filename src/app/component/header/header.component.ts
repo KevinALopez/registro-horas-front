@@ -1,9 +1,9 @@
 import { Component, inject, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UsersService } from '../../services/users.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,28 +13,28 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent{
-  passwordForm:  FormGroup;
+export class HeaderComponent {
+  passwordForm: FormGroup;
+  router = inject(Router) /* kevin B */
   isModalOpen = false;
-usersService = inject(UsersService)
-router = inject(Router)
-@Input() userId: number | undefined;
-loggedUser: any;
+  usersService = inject(UsersService)
+  @Input() userId: number | undefined;
+  loggedUser: any;
 
 
-constructor() {
-  this.passwordForm = new FormGroup({
-    currentPassword: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6) // Mínimo 6 caracteres
-    ]),
-    newPassword: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6), // Mínimo 6 caracteres
-      Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/) // Al menos una mayúscula y un número
-    ])
-  });
-}
+  constructor() {
+    this.passwordForm = new FormGroup({
+      currentPassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6) // Mínimo 6 caracteres
+      ]),
+      newPassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6), // Mínimo 6 caracteres
+        Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/) // Al menos una mayúscula y un número
+      ])
+    });
+  }
 
   async ngOnInit() {
     if (this.userId) {
@@ -66,14 +66,9 @@ constructor() {
     }
   }
 
-  async logout() {
-    try {
-      await this.usersService.logout();
-      Swal.fire('Cierre de sesión', 'Sesión cerrada correctamente', 'success');
-      this.router.navigateByUrl('/login');
-    } catch (error) {
-      Swal.fire('Error', 'Ocurrió un error al cerrar sesión', 'error');
-    }
+  logout() {  /* kevinb */
+    localStorage.removeItem('store_token')
+    this.router.navigate(['/login'])
   }
 }
 
