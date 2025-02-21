@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: "admin/projects/create", component: FormCreateProjectComponent },
   { path: "admin/users/:id", component: CardComponent },
   { path: 'edit-user', component: EditUserComponent },
-  { path: 'projects/edit-project/:projectId', component: EditProjectComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'projects/edit/:projectId', component: EditProjectComponent },
   { path: 'users', component: UsersListComponent },
   { path: '**', redirectTo: 'login' },
 

@@ -66,14 +66,17 @@
                     <p class="error">Campo obligatorio</p>
                     }
                     @if(checkFieldError('workedHours', 'pattern')){
-                    <p class="error">Introduce un número de 0 a 1000</p>
+                    <p class="error">Introduce un número de 0 a 999</p>
                     }
                 </div>
 
+                @if(editProjectForm.hasError('validatestartend')){
+                <p class="error">La fecha de fin de proyecto no puede ser anterior a la de inicio</p>
+                }
 
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary"
-                        [disabled]="editProjectForm.invalid">Actualizar</button>
+                        [disabled]="editProjectForm.hasError('validatestartend')">Actualizar</button>
                     <!-- <input type="submit" value="Actualizar" class="btn btn-primary"> -->
                     <button type="button" class="btn btn-secondary" (click)="cancel()">Cancelar</button>
                 </div>
