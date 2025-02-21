@@ -14,6 +14,7 @@ import { adminGuard } from './guards/admin.guard';
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
+<<<<<<< HEAD
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'admin/projects/create', component: FormCreateProjectComponent, canActivate: [authGuard, adminGuard] },
   { path: 'admin/users/:id', component: CardComponent, canActivate: [authGuard, adminGuard] },
@@ -22,5 +23,14 @@ export const routes: Routes = [
   { path: 'users/edit/:id', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
   { path: 'edit-user', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
   { path: 'projects', component: ProjectsListComponent, canActivate: [authGuard, adminGuard] },
+=======
+  { path: 'home', component: HomeComponent },
+  { path: "admin/projects/create", component: FormCreateProjectComponent },
+  { path: "admin/users/:id", component: CardComponent },
+  { path: 'projects/edit/:projectId', component: EditProjectComponent },
+  { path: 'users', component: UsersListComponent },
+  { path: 'edit-user', component: EditUserComponent },
+  { path: 'projects', component: ProjectsListComponent },
+>>>>>>> c101472e641fda372bbacf7295ebdfee82f750f5
   { path: '**', component: NotFoundComponent },
 ];
