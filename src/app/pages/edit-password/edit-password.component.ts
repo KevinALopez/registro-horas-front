@@ -1,55 +1,62 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { HeaderComponent } from '../../component/header/header.component';
 import { FooterComponent } from '../../component/footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import Swal from 'sweetalert2';
 
-interface PasswordResponse {
-  message: string;
-  status: number;
-}
 
 @Component({
   selector: 'app-edit-password',
-  standalone: true,
-  imports: [HeaderComponent, FooterComponent, FormsModule, CommonModule],
+  imports: [HeaderComponent, FooterComponent, ReactiveFormsModule],
   templateUrl: './edit-password.component.html',
   styleUrl: './edit-password.component.css'
 })
 export class EditPasswordComponent {
-  formData = {
-    username: '',
-    email: '',
-    currentPassword: '',
-    newPassword: '',
-    role: '',
-    contract: ''
-  };
+  passwordForm: FormGroup;
+  usersService = inject(UsersService);
+  router = inject(Router);
+  @Input() userId: string = '';
 
-  private usersService = inject(UsersService);
-  private router = inject(Router);
+  constructor() {
+    this.passwordForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      currentPassword: new FormControl('', [Validators.required]),
+      newPassword: new FormControl('', [Validators.required]),
+    });
+  }
 
-  constructor() {}
-
-  async onSubmit(): Promise<void> {
+  async ngOnInit() {
     try {
-      const response = await this.usersService.changePassword(
-        this.formData.username,
-        this.formData.currentPassword,
-        this.formData.newPassword
-      );
-
+      const userId = parseInt(this.userId);
+      console.log(userId, 'userId');
+      const password = await this.usersService.changePassword(userId, this.passwordForm.value.currentPassword, this.passwordForm.value.newPassword);
+      console.log(password, 'password actual');
+      const {username} = password!;
+      this.passwordForm.patchValue({username});
+      console.log(this.passwordForm.value, 'password actualizada');
       Swal.fire('Contraseña actualizada exitosamente', 'Gracias por tu trabajo', 'success');
-      this.router.navigate(['/login']);
-    } catch (error: any) {
-      if (error?.status === 401) {
-        Swal.fire('Usuario o contraseña actual incorrectos', 'Por favor, verifica tus credenciales', 'error');
-      } else {
-        Swal.fire('Error al actualizar la contraseña', 'Por favor, intenta nuevamente', 'error');
-      }
+    } catch (error) {
+      Swal.fire('Error al actualizar la contraseña', 'Por favor, intenta nuevamente', 'error');
     }
   }
+
+  async onSubmit() {
+    try {
+      const userId = parseInt(this.userId);
+      console.log(userId, 'userId en el onSubmit');
+      const password = await this.usersService.changePassword(userId, this.passwordForm.value.currentPassword, this.passwordForm.value.newPassword);
+      console.log(password, 'password actual en el onSubmit');
+      const {username} = password!;
+      this.passwordForm.patchValue({username});
+      console.log(this.passwordForm.value, 'password actualizada en el onSubmit');
+      Swal.fire('Contraseña actualizada exitosamente', 'Gracias por tu trabajo', 'success');
+      this.router.navigateByUrl('/login');
+    }
+    catch (error) {
+      Swal.fire('Error al actualizar la contraseña', 'Por favor, intenta nuevamente', 'error');
+    }
+  }
+
 }
