@@ -1,15 +1,18 @@
 <div class="card container text-center w-100 py-3 shadow stopwatch">
   <h1>Horas Trabajadas</h1>
   <p class="text-lg">{{ formattedTime }}</p>
+  @if(runningPause){
+  <p class="text-sm">Pausa: {{ formattedTimePause }}</p>
+  }
   <div class="d-flex justify-content-center gap-4">
-    <button class="btn btn-primary" (click)="startTimer($event)">
+    <button
+      class="btn btn-primary"
+      (click)="startTimer()"
+      [disabled]="runningPause"
+    >
       {{ startText }}
     </button>
-    <button
-      class="btn btn-secondary"
-      (click)="startPause()"
-      [disabled]="!running"
-    >
+    <button class="btn btn-dark" (click)="startPause()" [disabled]="!canPause">
       {{ pauseText }}
     </button>
   </div>
