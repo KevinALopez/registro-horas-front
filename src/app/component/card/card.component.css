@@ -1,0 +1,23 @@
+.card{
+  border: none;
+  border-radius: 30px;
+  background-color: rgba(29, 107, 242, 0.153);
+  transition: box-shadow 0.3s ease;
+  h5{
+  font-size: 40px;
+  }
+  img{
+    padding: 10px;
+    width: 8rem;
+  }
+  .card-body{
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    /*background-color: rgba(103, 153, 254, 0.369);*/
+    background: linear-gradient(0deg, rgba(0, 92, 250, 0.245)50%, rgba(91, 146, 247, 0.867) 100%);
+  }
+
+}
+.card:hover{
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.475);
+}

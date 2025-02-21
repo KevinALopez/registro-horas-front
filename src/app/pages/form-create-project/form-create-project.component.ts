@@ -3,6 +3,7 @@ import { ProjectsService} from '../../services/projects.service';
 import { Form, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NavSidebarComponent } from "../../component/nav-sidebar/nav-sidebar.component";
 import { HeaderComponent } from "../../component/header/header.component";
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -45,11 +46,14 @@ export class FormCreateProjectComponent {
      
     },[])
   }
-  setDataPost() {
-    this.projectService.createNewProject(this.postForm.value);
-    alert("Post insertado correctamente");
-    this.postForm.reset();
-
+  async setDataPost() {
+    try {
+      const project = await this.projectService.createNewProject(this.postForm.value);
+      alert("Proyecto creado con exito");
+      this.postForm.reset();
+    } catch (error) {
+      Swal.fire("Error", "Error al crear el proyecto", "error");
+    }
   }
    //validacion
    validate(campo:string){
