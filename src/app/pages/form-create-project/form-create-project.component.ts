@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-<<<<<<< HEAD
 import { ProjectsService } from '../../services/projects.service';
 import {
   Form,
@@ -11,14 +10,8 @@ import {
 } from '@angular/forms';
 import { NavSidebarComponent } from '../../components/header/nav-sidebar/nav-sidebar.component';
 import { HeaderComponent } from '../../components/header/header.component';
-=======
-import { ProjectsService} from '../../services/projects.service';
-import { Form, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NavSidebarComponent } from "../../component/nav-sidebar/nav-sidebar.component";
-import { HeaderComponent } from "../../component/header/header.component";
 import Swal from 'sweetalert2';
 
->>>>>>> getUserById
 
 @Component({
   selector: 'app-form-create-project',
@@ -61,12 +54,6 @@ export class FormCreateProjectComponent {
       []
     );
   }
-<<<<<<< HEAD
-  setDataPost() {
-    this.projectService.createNewProject(this.postForm.value);
-    alert('Post insertado correctamente');
-    this.postForm.reset();
-=======
   async setDataPost() {
     try {
       const project = await this.projectService.createNewProject(this.postForm.value);
@@ -75,7 +62,6 @@ export class FormCreateProjectComponent {
     } catch (error) {
       Swal.fire("Error", "Error al crear el proyecto", "error");
     }
->>>>>>> getUserById
   }
   //validacion
   validate(campo: string) {
