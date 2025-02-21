@@ -18,7 +18,7 @@ import * as dayjs from 'dayjs';
 export class EditProjectComponent {
 
   editProjectForm: FormGroup;
-  // arrProjects: { data: IProject[] } = { data: [] };
+
   projectsService = inject(ProjectsService);
   @Input() projectId!: number;
   router = inject(Router);
@@ -34,13 +34,10 @@ export class EditProjectComponent {
         Validators.minLength(3)
       ]),
       start: new FormControl("", [
-        Validators.required,
-
-        // TODO:crear validador donde la fecha de end no sea anterior a la de start
+        Validators.required
       ]),
       end: new FormControl("", [
-        Validators.required,
-        this.validateStartEnd
+        Validators.required
       ]),
       status: new FormControl("", [
         Validators.required
@@ -56,17 +53,22 @@ export class EditProjectComponent {
     }, [this.validateStartEnd]);
   }
   async ngOnInit() {
-    // this.arrProjects = await this.projectsService.getAll();//TODO: crear funcion para llenar selector de status 
-    const project = await this.projectsService.getById(this.projectId);
+    try {
+      const project = await this.projectsService.getById(this.projectId);
+      // formateo de string a tipo datetime
+      project.start = new Date(project.start).toISOString().slice(0, 16);
+      project.end = new Date(project.end).toISOString().slice(0, 16);
 
-    // formateo de string a tipo datetime
-    project.start = new Date(project.start).toISOString().slice(0, 16);
-    project.end = new Date(project.end).toISOString().slice(0, 16);
+
+      const { name, description, start, end, status, estimatedHours, workedHours } = project;
+      this.editProjectForm.setValue({ name, description, start, end, status, estimatedHours, workedHours });
+
+    } catch (error) {
+      Swal.fire('', `Ha ocurrido un error. No existe proyecto con id: ${this.projectId}`, 'error');
+      this.router.navigateByUrl('/projects');
+    }
 
 
-    const { name, description, start, end, status, estimatedHours, workedHours } = project;
-
-    this.editProjectForm.setValue({ name, description, start, end, status, estimatedHours, workedHours });
   }
 
   async onSubmit() {
@@ -74,7 +76,7 @@ export class EditProjectComponent {
       const project = await this.projectsService.updateById(this.projectId, this.editProjectForm.value);
 
       Swal.fire('Edición', `Se ha actualizado el proyecto: ${project.updatedProject.name}`, 'success');
-      this.router.navigateByUrl('/projects'); // TODO: redirigir a la lista de proyectos
+      this.router.navigateByUrl('/projects');
     } catch (error) {
       Swal.fire('Edición', 'Ha ocurrido un error. Vuelve a intentarlo', 'error');
     }
@@ -91,6 +93,7 @@ export class EditProjectComponent {
 
   }
 
+  //validador de fechas de start y end
   validateStartEnd(formFields: AbstractControl) {
     const start = formFields.get('start')?.value;
     const end = formFields.get('end')?.value;
