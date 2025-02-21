@@ -1,10 +1,11 @@
+@if(usersService.isLogged()){
 <div class="sidebar" [class.hide]="!displaySideNavbar">
   <div>
     <i (click)="closeSideNavbar()" class="fa-solid fa-x"></i>
   </div>
   <nav class="flex-column w-100">
     <h2>
-      <a (click)="closeSideNavbar()" class="nav-link" [routerLink]="['/home']">
+      <a (click)="closeSideNavbar()" class="nav-link">
         <span class="icon">
           <i class="fa-brands fa-slack"></i>
         </span>
@@ -13,7 +14,7 @@
         </span>
       </a>
     </h2>
-    <a class="nav-link" href="#">
+    <a class="nav-link" (click)="closeSideNavbar()" [routerLink]="['/home']">
       <span class="icon">
         <i class="fa-solid fa-play"></i>
       </span>
@@ -25,62 +26,50 @@
       </span>
       <span class="description">Horas registradas</span>
     </a>
-    <a
-      class="nav-link"
-      href="#"
-      data-bs-toggle="collapse"
-      data-bs-target="#submenuUsers"
-      aria-expanded="false"
-      aria-controls="submenuUsers"
-    >
+    @if(usersService.isAdmin()){
+    <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#submenuUsers" aria-expanded="false"
+      aria-controls="submenuUsers">
       <span class="icon">
         <i class="fa-regular fa-address-book"></i>
       </span>
-      <span class="description"
-        >Usuarios <i class="fa-solid fa-caret-down"></i
-      ></span>
+      <span class="description">Usuarios <i class="fa-solid fa-caret-down"></i></span>
     </a>
 
     <!-- submenu usuarios -->
     <div class="sub-menu collapse" id="submenuUsers">
-      <a class="nav-link" href="#">
+      <a class="nav-link" (click)="closeSideNavbar()" [routerLink]="['/users']">
         <span class="description">Lista de usuarios</span>
       </a>
-      <a class="nav-link" href="#">
+      <a class="nav-link" (click)="closeSideNavbar()" [routerLink]="['/login']">
         <span class="description">Añadir usuario</span>
       </a>
     </div>
 
-    <a
-      class="nav-link"
-      href="#"
-      data-bs-toggle="collapse"
-      data-bs-target="#submenuProjects"
-      aria-expanded="false"
-      aria-controls="submenuProjects"
-    >
+    <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#submenuProjects" aria-expanded="false"
+      aria-controls="submenuProjects">
       <span class="icon">
         <i class="fa-solid fa-diagram-project"></i>
       </span>
-      <span class="description"
-        >Proyectos <i class="fa-solid fa-caret-down"></i
-      ></span>
+      <span class="description">Proyectos <i class="fa-solid fa-caret-down"></i></span>
     </a>
 
     <!-- submenu proyectos-->
     <div class="sub-menu collapse" id="submenuProjects">
-      <a class="nav-link" href="#">
+      <a class="nav-link" (click)="closeSideNavbar()" [routerLink]="['/projects']">
         <span class="description">Lista de proyectos</span>
       </a>
-      <a class="nav-link" href="#">
-        <span class="description">Añadir proyecto</span>
+      <a class="nav-link" (click)="closeSideNavbar()" [routerLink]="['admin/projects/create']">
+        <span class=" description">Añadir proyecto</span>
       </a>
     </div>
-    <a class="nav-link mobile-logout" href="#">
+    }
+    <a class="nav-link mobile-logout" (click)="logout()">
       <span class="icon">
         <i class="fa-solid fa-right-from-bracket"></i>
       </span>
-      <span class="description" (onclick)="logout()">Cerrar Session </span>
+      <span class="description">Cerrar Session </span>
     </a>
+
   </nav>
 </div>
+}
