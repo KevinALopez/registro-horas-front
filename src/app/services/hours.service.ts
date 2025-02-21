@@ -27,6 +27,21 @@ type RegisetHoursOnProjectPayload = {
   hours: number;
 };
 
+type IncompleteShiftResponse = {
+  id: number;
+  userid: number;
+  start: string;
+  end: null;
+};
+
+type IncompletePauseResponse = {
+  id: number;
+  user_id: number;
+  start: string;
+  end: null;
+  type: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -99,6 +114,20 @@ export class HoursService {
         date,
         hours,
       })
+    );
+  }
+
+  getIncompleteShift() {
+    return lastValueFrom(
+      this.http.get<IncompleteShiftResponse>(`${this.baseUrl}/shift/incomplete`)
+    );
+  }
+
+  getIncompletePause() {
+    return lastValueFrom(
+      this.http.get<IncompletePauseResponse>(
+        `${this.baseUrl}/shift/pause/incomplete`
+      )
     );
   }
 }

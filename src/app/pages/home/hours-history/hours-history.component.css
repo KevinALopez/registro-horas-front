@@ -1,0 +1,18 @@
+.records {
+  color: black;
+
+  > div {
+    max-height: 55vh;
+    max-width: 600px;
+    overflow: scroll;
+    scrollbar-width: none;
+
+    article span {
+      padding: 0.5rem;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

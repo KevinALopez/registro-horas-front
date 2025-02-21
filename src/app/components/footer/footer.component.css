@@ -1,5 +1,6 @@
 /* Estilos del footer */
 .custom-footer {
+  position: fixed;
   text-align: center;
   padding: 0.5rem 0;
   font-size: 0.875rem;
@@ -26,6 +27,7 @@
 .company-name {
   font-weight: bold;
   font-size: 0.875rem;
+  margin-top: 2rem;
   margin-bottom: 0.3125rem;
   color: black;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
