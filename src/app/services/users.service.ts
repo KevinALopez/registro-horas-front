@@ -121,11 +121,13 @@ export class UsersService {
     });
   }
 
-  changePassword(username: string, currentPassword: string, newPassword: string) {
-    return this.http.post(`${this.apiUrl}/users/change-password`, {
-      username,
-      currentPassword,
-      newPassword
-    });
+  changePassword(username: string, currentPassword: string, newPassword: string): Promise<any> {
+    return lastValueFrom(
+      this.http.post(`${this.apiUrl}/users/edit-password`, {
+        username,
+        currentPassword,
+        newPassword
+      })
+    );
   }
 }
