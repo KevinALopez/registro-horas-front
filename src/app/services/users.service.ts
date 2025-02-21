@@ -85,5 +85,13 @@ export class UsersService {
       return false;
     }
     return true;
+  /*changePassword(userId: number, currentPassword: string, newPassword: string){
+    return lastValueFrom(
+      this.http.post<IUser>(`${this.baseUrl}/users/edit-password`, {
+        userId,
+        currentPassword,
+        newPassword
+      })
+    );*/
   }
 }
