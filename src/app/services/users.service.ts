@@ -3,6 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { lastValueFrom, BehaviorSubject } from 'rxjs';
 import { IUser } from '../interfaces/iuser';
 import { User } from '../interfaces/user.interface';
+import { jwtDecode } from 'jwt-decode';
+import { CustomPayload } from '../guards/admin.guard';
 
 type LoginBody = {
   username: string;
@@ -116,5 +118,21 @@ export class UsersService {
       this.loggedUserSubject.next(null);
       resolve();
     });
+  }
+
+  isLogged() {
+    if (localStorage.getItem('store_token')) {
+      return true;
+    }
+    return false;
+  }
+
+  isAdmin() {
+    const token = localStorage.getItem('store_token')!;
+    const payload = jwtDecode<CustomPayload>(token);
+    if (payload.role !== 'admin') {
+      return false;
+    }
+    return true;
   }
 }
