@@ -4,7 +4,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { FormCreateProjectComponent } from './pages/form-create-project/form-create-project.component';
-<<<<<<< HEAD
 import { CardComponent } from './components/card/card.component';
 import { EditProjectComponent } from './pages/edit-project/edit-project.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
@@ -12,29 +11,13 @@ import { ProjectsListComponent } from './pages/projects-list/projects-list.compo
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
-=======
-import { CardComponent } from './component/card/card.component';
-import { ProfileComponent } from './pages/profile/profile.component';
->>>>>>> getUserById
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
-<<<<<<< HEAD
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'admin/projects/create', component: FormCreateProjectComponent, canActivate: [authGuard, adminGuard] },
   { path: 'admin/users/:id', component: CardComponent, canActivate: [authGuard, adminGuard] },
-=======
-  { path: 'home', component: HomeComponent },
-  {path: 'edit-user', component: EditUserComponent},
-  { path: "admin/projects/create", component: FormCreateProjectComponent },
-  { path: "admin/users/:id", component: CardComponent },
-  { path: "upgrade", component: ProfileComponent },
-
-  { path: '**', redirectTo: 'login' },
-
-]
->>>>>>> getUserById
 
   { path: 'users', component: UsersListComponent, canActivate: [authGuard] },
   { path: 'users/edit/:id', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
