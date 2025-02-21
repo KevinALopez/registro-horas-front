@@ -121,10 +121,10 @@ export class UsersService {
     });
   }
 
-  changePassword(username: string, currentPassword: string, newPassword: string): Promise<any> {
+  changePassword(userId: number, currentPassword: string, newPassword: string){
     return lastValueFrom(
-      this.http.post(`${this.apiUrl}/users/edit-password`, {
-        username,
+      this.http.post<IUser>(`${this.baseUrl}/users/edit-password`, {
+        userId,
         currentPassword,
         newPassword
       })
