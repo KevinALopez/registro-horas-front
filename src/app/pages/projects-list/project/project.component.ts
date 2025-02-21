@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { IProject } from '../../../interfaces/iproject';
 import Swal from 'sweetalert2';
 import { ProjectsService } from '../../../services/projects.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-project',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css',
 })
