@@ -27,6 +27,35 @@ export class StopwatchComponent {
 
   hoursService = inject(HoursService);
 
+  async ngOnInit() {
+    try {
+      const incompleteShift = await this.hoursService.getIncompleteShift();
+      this.counter = Date.now() - new Date(incompleteShift.start).getTime();
+      this.formattedTime = formatDate(this.counter, 'HH:mm:ss', 'en-US', 'UTC');
+      this.startId = incompleteShift.id;
+      this.startTimer();
+    } catch ({ message }: any) {
+      console.log(message);
+      return;
+    }
+
+    try {
+      const incompletePause = await this.hoursService.getIncompletePause();
+      this.counterPause =
+        Date.now() - new Date(incompletePause.start).getTime();
+      this.formattedTimePause = formatDate(
+        this.counterPause,
+        'HH:mm:ss',
+        'en-US',
+        'UTC'
+      );
+      this.startIdPause = incompletePause.id;
+      this.startPause();
+    } catch ({ message }: any) {
+      console.log(message);
+    }
+  }
+
   async startTimer() {
     if (this.running) return this.logHours();
 
@@ -39,7 +68,7 @@ export class StopwatchComponent {
         'en-US'
       );
 
-      if (!this.runningPause) {
+      if (!this.runningPause && this.startId === -1) {
         const { id } = await this.hoursService.registerStart(formattedStarTime);
         this.startId = id;
       }
@@ -70,11 +99,13 @@ export class StopwatchComponent {
         'yyyy-MM-dd HH:mm:ss',
         'en-US'
       );
-      const { id } = await this.hoursService.registerPauseStart(
-        formattedStarTime,
-        'break'
-      );
-      this.startIdPause = id;
+      if (this.startIdPause === -1) {
+        const { id } = await this.hoursService.registerPauseStart(
+          formattedStarTime,
+          'break'
+        );
+        this.startIdPause = id;
+      }
     } catch ({ message }: any) {
       Swal.fire('Error', message, 'error');
       return;
