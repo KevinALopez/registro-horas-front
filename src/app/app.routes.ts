@@ -11,6 +11,7 @@ import { ProjectsListComponent } from './pages/projects-list/projects-list.compo
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
+import { EditPasswordComponent } from './pages/edit-password/edit-password.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -24,5 +25,6 @@ export const routes: Routes = [
   { path: 'edit-user', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
   { path: 'projects', component: ProjectsListComponent, canActivate: [authGuard, adminGuard] },
   { path: 'projects/edit/:projectId', component: EditProjectComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'edit-password', component: EditPasswordComponent, canActivate: [authGuard] },
   { path: '**', component: NotFoundComponent, canActivate: [authGuard] },
 ];
