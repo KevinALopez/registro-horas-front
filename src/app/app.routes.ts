@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { FormCreateProjectComponent } from './pages/form-create-project/form-create-project.component';
-import { CardComponent } from './component/card/card.component';
+import { CardComponent } from './components/card/card.component';
 import { EditProjectComponent } from './pages/edit-project/edit-project.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
 import { ProjectsListComponent } from './pages/projects-list/projects-list.component';

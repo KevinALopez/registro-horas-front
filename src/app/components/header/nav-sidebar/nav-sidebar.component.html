@@ -1,7 +1,10 @@
-<div class="sidebar">
-  <nav class="flex-column">
+<div class="sidebar" [class.hide]="!displaySideNavbar">
+  <div>
+    <i (click)="closeSideNavbar()" class="fa-solid fa-x"></i>
+  </div>
+  <nav class="flex-column w-100">
     <h2>
-      <a class="nav-link" href="#">
+      <a (click)="closeSideNavbar()" class="nav-link" [routerLink]="['/home']">
         <span class="icon">
           <i class="fa-brands fa-slack"></i>
         </span>
@@ -73,5 +76,11 @@
         <span class="description">Añadir proyecto</span>
       </a>
     </div>
+    <a class="nav-link mobile-logout" href="#">
+      <span class="icon">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </span>
+      <span class="description" (onclick)="logout()">Cerrar Session </span>
+    </a>
   </nav>
 </div>
