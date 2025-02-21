@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { HomeComponent } from './pages/home/home.component';
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';

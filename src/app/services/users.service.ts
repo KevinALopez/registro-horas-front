@@ -5,6 +5,7 @@ import { IUser } from '../interfaces/iuser';
 import { User } from '../interfaces/user.interface';
 import { jwtDecode } from 'jwt-decode';
 import { CustomPayload } from '../guards/admin.guard';
+import { environment } from '../environments/environment';
 
 type LoginBody = {
   username: string;
@@ -37,6 +38,8 @@ type DeleteResponse = {
   providedIn: 'root',
 })
 export class UsersService {
+  private apiUrl = environment.apiUrl;
+
   updatePassword(
     userId: number,
     arg1: { currentPassword: string; newPassword: string }
@@ -136,3 +139,4 @@ export class UsersService {
     return true;
   }
 }
+
