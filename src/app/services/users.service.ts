@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { lastValueFrom, BehaviorSubject } from 'rxjs';
 import { IUser } from '../interfaces/iuser';
 import { User } from '../interfaces/user.interface';
+import { environment } from '../environments/environment';
 
 type LoginBody = {
   username: string;
@@ -35,6 +36,8 @@ type DeleteResponse = {
   providedIn: 'root',
 })
 export class UsersService {
+  private apiUrl = environment.apiUrl;
+
   updatePassword(
     userId: number,
     arg1: { currentPassword: string; newPassword: string }
@@ -115,6 +118,14 @@ export class UsersService {
       localStorage.removeItem('user');
       this.loggedUserSubject.next(null);
       resolve();
+    });
+  }
+
+  changePassword(username: string, currentPassword: string, newPassword: string) {
+    return this.http.post(`${this.apiUrl}/users/change-password`, {
+      username,
+      currentPassword,
+      newPassword
     });
   }
 }
