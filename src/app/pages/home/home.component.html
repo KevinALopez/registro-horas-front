@@ -1,8 +1,17 @@
 <section class="home d-flex flex-column gap-3 container">
   <div>
-    <div class="card"></div>
+    <h1 class="text-center">
+      Bienvenido
+      {{ loggedUser.username[0].toUpperCase() + loggedUser.username.slice(1) }}!
+    </h1>
     <div>
       <app-stopwatch />
+    </div>
+    <div class="text-center">
+      <h4>Historial de Mes Actual</h4>
+      <div>
+        <app-hours-history />
+      </div>
     </div>
   </div>
 </section>
