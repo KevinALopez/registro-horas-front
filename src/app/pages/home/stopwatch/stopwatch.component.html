@@ -1,8 +1,15 @@
-<div class="card container text-center p-5 stopwatch">
+<div class="card container text-center w-100 py-3 shadow stopwatch">
+  <h1>Horas Trabajadas</h1>
   <p class="text-lg">{{ formattedTime }}</p>
   <div class="d-flex justify-content-center gap-4">
-    <button (click)="startTimer($event)">{{ startText }}</button>
-    <button (click)="startPause()" [disabled]="!running">
+    <button class="btn btn-primary" (click)="startTimer($event)">
+      {{ startText }}
+    </button>
+    <button
+      class="btn btn-secondary"
+      (click)="startPause()"
+      [disabled]="!running"
+    >
       {{ pauseText }}
     </button>
   </div>

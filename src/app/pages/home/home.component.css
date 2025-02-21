@@ -1,0 +1,20 @@
+.home {
+  float: right;
+  margin-top: 5rem;
+
+  .card {
+    background-color: black;
+    height: 200px;
+  }
+}
+
+@media (min-width: 768px) {
+  .home {
+    max-width: calc(100% - 200px);
+
+    & > div {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+}

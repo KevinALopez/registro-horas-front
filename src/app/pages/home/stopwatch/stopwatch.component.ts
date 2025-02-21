@@ -11,8 +11,8 @@ export class StopwatchComponent {
   counter!: number;
   formattedTime: string = '00:00:00';
   running: boolean = false;
-  startText: string = 'Comenzar';
-  pauseText: string = 'Pausa';
+  startText: string = 'Comenzar Jornada';
+  pauseText: string = 'Iniciar Pausa';
   timerRef: any;
 
   startTimer($event: any) {
@@ -20,7 +20,7 @@ export class StopwatchComponent {
 
     this.running = !this.running;
 
-    this.startText = 'Finalizar';
+    this.startText = 'Finalizar Jornada';
     const startTime = Date.now() - (this.counter || 0);
 
     this.timerRef = setInterval(() => {
