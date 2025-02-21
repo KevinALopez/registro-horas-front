@@ -1,7 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, input } from '@angular/core';
 import { IUser } from '../../interfaces/iuser';
 import { UsersService } from '../../services/users.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HeaderComponent } from "../header/header.component";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-card',
@@ -12,22 +15,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CardComponent {
   userService = inject(UsersService);
   user? : IUser
-  router = inject(Router);
-  route = inject(ActivatedRoute);
+  @Input() id?: number;
 
 
-  viewUser(id: number): void {
-    //this.userService.getUserById(id)((user: IUser) => {
-      //this.user = user;
-      //console.log(user)
-    //});
-
+  async ngOnInit(): Promise<void> {
+   try {
+    if (this.id !== undefined) {
+      this.user = await this.userService.getById(this.id);
+    }
+  } catch (error) {
+    Swal.fire('Error', 'Error al obtener el usuario', 'error');
   }
-  
-  ngOnInit(): void {
-    console.log('init');
-    //const id = this.route.snapshot.paramMap.get('id')!;
-    //this.viewUser(Number(id));
   }
-
 }
