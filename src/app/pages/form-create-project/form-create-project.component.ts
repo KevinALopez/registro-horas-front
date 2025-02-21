@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ProjectsService } from '../../services/projects.service';
 import {
+  AbstractControl,
   Form,
   FormControl,
   FormGroup,
@@ -51,7 +52,7 @@ export class FormCreateProjectComponent {
           Validators.pattern('^(?:[1-9]|[1-9][0-9]|[1-9][0-9]{2})$'),
         ]),
       },
-      []
+      [this.validateStartEnd]
     );
   }
   async setDataPost() {
@@ -69,4 +70,17 @@ export class FormCreateProjectComponent {
       this.postForm.get(campo)?.invalid && this.postForm.get(campo)?.touched
     );
   }
+  //validador de fechas de start y end
+    validateStartEnd(formFields: AbstractControl) {
+      const start = formFields.get('start')?.value;
+      const end = formFields.get('end')?.value;
+  
+      if (!(start && end)) return null; //se comprueba primero que los campos no vengan vacíos
+  
+      //se convierten las fechas a milisegundos y se compara si endDate es anterior a startDate
+      const startDate = new Date(start).getTime();
+      const endDate = new Date(end).getTime();
+  
+      return endDate < startDate ? { validatestartend: true } : null;
+    }
 }
