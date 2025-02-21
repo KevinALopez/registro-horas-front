@@ -11,6 +11,7 @@ import { UsersService } from '../../../services/users.service';
 export class NavSidebarComponent {
   router = inject(Router)
   usersService = inject(UsersService)
+
   @Input() displaySideNavbar = false;
   @Output() onCloseSideNavbar = new EventEmitter();
   @Output() onLogout = new EventEmitter();
