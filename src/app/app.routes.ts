@@ -17,8 +17,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'admin/projects/create', component: FormCreateProjectComponent, canActivate: [authGuard, adminGuard] },
-  { path: 'admin/users/:id', component: CardComponent, canActivate: [authGuard, adminGuard] },
-
   { path: 'users', component: UsersListComponent, canActivate: [authGuard] },
   { path: 'users/edit/:id', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
   { path: 'edit-user', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
