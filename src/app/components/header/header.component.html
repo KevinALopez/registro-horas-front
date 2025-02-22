@@ -1,17 +1,13 @@
 <nav class="custom-navbar container px-3">
   <div class="d-flex justify-content-between align-items-center py-1">
     <a [routerLink]="['/home']">
-      <img
-        src="/images/a-clock-that-has-a-watching-eye-in-the-center (1).png"
-        alt="Logo"
-      />
+      <img src="/images/a-clock-that-has-a-watching-eye-in-the-center (1).png" alt="Logo" />
     </a>
-    <button class="btn btn-light" (click)="logout()">Cerrar Session</button>
+    <button class="botonPro" (click)="logout()">
+      Cerrar Sesion
+    </button>
     <i (click)="openSideNavbar()" class="fa-solid fa-bars"></i>
   </div>
-  <app-nav-sidebar
-    [displaySideNavbar]="isNavSidebarOpen"
-    (onCloseSideNavbar)="closeSideNavbar()"
-    (onLogout)="logout()"
-  ></app-nav-sidebar>
+  <app-nav-sidebar [displaySideNavbar]="isNavSidebarOpen" (onCloseSideNavbar)="closeSideNavbar()"
+    (onLogout)="logout()"></app-nav-sidebar>
 </nav>

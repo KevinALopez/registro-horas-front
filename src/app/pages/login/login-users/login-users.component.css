@@ -90,6 +90,7 @@
   transition: border-color 1.9s linear;
 }
 
+
 @media(width>426px) {
   .formulario {
     width: 100%;

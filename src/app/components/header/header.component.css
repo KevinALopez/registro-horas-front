@@ -2,7 +2,8 @@
   img {
     max-height: 60px;
     height: auto;
-    filter: brightness(0) invert(1); /* 🔥 Convierte la imagen negra en blanca */
+    filter: brightness(0) invert(1);
+    /* 🔥 Convierte la imagen negra en blanca */
   }
 
   button {
@@ -12,6 +13,48 @@
   i {
     font-size: 2rem;
     color: white;
+  }
+
+  /*   .botonPro {
+    border-radius: 10px;
+    padding: 0.2rem 1rem;
+    background-color: transparent;
+    color: rgba(6, 6, 74, 0.5);
+    border: 2px solid rgba(3, 3, 97, 0.466);
+    background: linear-gradient(to top right, rgba(95, 9, 9, 0.801), rgba(214, 0, 0, 0.911));
+    font-weight: bold;
+    color: white;
+
+
+    &:hover {
+      transition: background 2s linear;
+      border: 2px solid rgba(0, 0, 0, 0.8);
+      background: linear-gradient(to top right, rgba(214, 0, 0, 0.911), rgba(95, 9, 9, 0.801));
+    }
+  } */
+  .botonPro {
+    border-radius: 10px;
+    padding: 0.2rem 1rem;
+    background-color: transparent;
+
+    border: 2px solid rgb(37, 0, 0);
+    background: linear-gradient(to top right, rgba(61, 60, 60, 0.801), rgba(143, 143, 143, 0.904));
+    font-weight: bold;
+    color: white;
+
+    img {
+      display: none;
+
+    }
+  }
+
+
+  .botonPro:hover {
+    color: white;
+    border-color: white;
+    background: linear-gradient(to top right, rgba(134, 0, 0, 0.904), rgba(252, 0, 0, 0.801));
+    transition: border-color 0.8s linear;
+
   }
 }
 
