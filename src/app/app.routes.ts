@@ -12,6 +12,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
 import { EditPasswordComponent } from './pages/edit-password/edit-password.component';
+import { HoursRecordedComponent } from './pages/hours-recorded/hours-recorded.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -24,5 +25,6 @@ export const routes: Routes = [
   { path: 'projects', component: ProjectsListComponent, canActivate: [authGuard, adminGuard] },
   { path: 'projects/edit/:projectId', component: EditProjectComponent, canActivate: [authGuard, adminGuard] },
   { path: 'edit-password', component: EditPasswordComponent, canActivate: [authGuard] },
+  { path: 'hours-registered',component: HoursRecordedComponent, canActivate: [authGuard] },
   { path: '**', component: NotFoundComponent, canActivate: [authGuard] },
 ];
