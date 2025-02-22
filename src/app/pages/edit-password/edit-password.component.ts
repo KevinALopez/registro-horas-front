@@ -64,7 +64,7 @@ export class EditPasswordComponent {
     }
   }
 
-  async onSubmit() {
+  /*async onSubmit() {
     console.log('onSubmit iniciado');
     console.log('Estado del formulario:', {
       valid: this.passwordForm.valid,
@@ -101,5 +101,37 @@ export class EditPasswordComponent {
         formErrors: this.passwordForm.errors
       });
     }
+  }*/
+    async onSubmit() {
+      console.log('onSubmit iniciado');
+      console.log('Estado del formulario:', {
+        valid: this.passwordForm.valid,
+        value: this.passwordForm.value
+      });
+
+      if (this.passwordForm.valid) {
+        try {
+          console.log('Intentando cambiar contraseña:', this.passwordForm.value);
+
+          const result = await this.usersService.changePassword(
+            this.passwordForm.value.currentPassword,
+            this.passwordForm.value.newPassword
+          );
+
+          console.log('Respuesta del servidor:', result);
+          await Swal.fire('Éxito', 'Contraseña actualizada exitosamente', 'success');
+          console.log('Redirigiendo a /home');
+          this.router.navigateByUrl('/home');
+        } catch (error) {
+          console.error('Error al cambiar contraseña:', error);
+          Swal.fire('Error', 'Error al actualizar la contraseña. Verifica que la contraseña actual sea correcta', 'error');
+        }
+      } else {
+        console.log('Formulario inválido:', {
+          formValid: this.passwordForm.valid,
+          formErrors: this.passwordForm.errors
+        });
+      }
   }
+
 }

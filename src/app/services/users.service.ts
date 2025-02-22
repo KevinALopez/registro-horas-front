@@ -87,7 +87,7 @@ export class UsersService {
     return true;
   }
 
-  changePassword(userId: number, currentPassword: string, newPassword: string) {
+  /*changePassword(userId: number, currentPassword: string, newPassword: string) {
     console.log('Service - changePassword iniciado:', {
       userId,
       currentPassword,
@@ -111,7 +111,32 @@ export class UsersService {
         console.error('Service - Error en changePassword:', error);
         throw error;
       });
-  }
+  }*/
+      changePassword(currentPassword: string, newPassword: string) {
+        console.log('Service - changePassword iniciado:', {
+          currentPassword,
+          newPassword
+        });
+
+        const token = localStorage.getItem('store_token');
+
+        return lastValueFrom(
+          this.http.put<{ message: string }>(
+            `${this.baseUrl}/users/change-password`, // 📌 Ya no se necesita el ID en la URL
+            { currentPassword, newPassword },
+            { headers: { Authorization: `Bearer ${token}` } }  // 📌 Token en headers
+          )
+        )
+          .then(response => {
+            console.log('Service - Respuesta exitosa:', response);
+            return response;
+          })
+          .catch(error => {
+            console.error('Service - Error en changePassword:', error);
+            throw error;
+          });
+    }
+
 
 
   getLoggedUser() {
