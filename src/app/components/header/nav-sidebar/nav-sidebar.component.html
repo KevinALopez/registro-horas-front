@@ -20,7 +20,11 @@
       </span>
       <span class="description">Inicio</span>
     </a>
-    <a class="nav-link" href="#">
+    <a
+      class="nav-link"
+      (click)="closeSideNavbar()"
+      [routerLink]="['/hours-registered']"
+    >
       <span class="icon">
         <i class="fa-solid fa-clock"></i>
       </span>
