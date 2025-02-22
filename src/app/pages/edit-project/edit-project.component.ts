@@ -102,14 +102,14 @@ export class EditProjectComponent {
       );
 
       Swal.fire(
-        'Edición',
-        `Se ha actualizado el proyecto: ${project.updatedProject.name}`,
+        '',
+        `Se ha actualizado correctamente el proyecto: ${project.updatedProject.name}`,
         'success'
       );
       this.router.navigateByUrl('/projects');
     } catch (error) {
       Swal.fire(
-        'Edición',
+        '',
         'Ha ocurrido un error. Vuelve a intentarlo',
         'error'
       );

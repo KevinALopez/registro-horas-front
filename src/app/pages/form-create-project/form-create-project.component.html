@@ -3,7 +3,7 @@
 <div class="my-5 pt-5">
     <div class="container">
         <div class="col-md-8 col-lg-7 offset-md-3 offset-lg-4">
-            <h2 class="mt-4">Añadir Projecto</h2>
+            <h2 class="mt-4 text-center">Añadir Proyecto</h2>
             <form class="border rounded p-4" [formGroup]="postForm" (ngSubmit)="setDataPost()">
                 <div class="mb-3">
                     <label class="form-label" for="name">Nombre:</label>
@@ -37,9 +37,9 @@
                 <div class="mb-3">
                     <label class="form-label" for="status">Estado:</label>
                     <select class="form-control" class="form-control" id="status" formControlName="status">
-                        <option value="Activo">Activo</option>
-                        <option disabled value="Inactivo">Terminado</option>
-                        <option disabled value="Pendiente">Cancelado</option>
+                        <option value="active">Activo</option>
+                        <option disabled value="finish">Terminado</option>
+                        <option disabled value="cancel">Cancelado</option>
                     </select>
                     @if(validate('status')) {
                     <p class="text-danger">*este campo es obligatorio</p>
@@ -50,16 +50,21 @@
                     <input class="form-control" id="estimatedHours" formControlName="estimatedHours" type="text" />
                     @if(validate('estimatedHours')) {
                     <p class="text-danger">*solo admite numeros > 0 && < 1000 </p>
-                    }
+                            }
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="hoursWorked">Horas trabajadas:</label>
                     <input class="form-control" id="hoursWorked" formControlName="workedHours" type="text" />
                     @if(validate('workedHours')) {
                     <p class="text-danger">*solo admite numeros > 0 && < 1000</p>
-                    }
+                            }
                 </div>
-                <button class="btn btn-danger" type="submit" [disabled]="postForm.invalid">Añadir</button>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-danger" type="submit" [disabled]="postForm.invalid">Añadir</button>
+                    <button type="button" class="btn btn-secondary" (click)="cancel()">
+                        Cancelar
+                    </button>
+                </div>
             </form>
         </div>
     </div>

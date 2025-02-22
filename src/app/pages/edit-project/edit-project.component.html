@@ -17,7 +17,7 @@
 
         <div class="mb-3">
           <label for="description" class="form-label">Descripción</label>
-          <input type="text" id="description" class="form-control" formControlName="description" />
+          <textarea class="form-control" id="description" formControlName="description"></textarea>
 
           @if(checkFieldError('description', 'required')){
           <p class="error">Campo obligatorio</p>

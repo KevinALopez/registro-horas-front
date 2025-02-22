@@ -12,6 +12,7 @@ import {
 import { NavSidebarComponent } from '../../components/header/nav-sidebar/nav-sidebar.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,6 +29,7 @@ import Swal from 'sweetalert2';
 export class FormCreateProjectComponent {
   projectService = inject(ProjectsService);
   postForm: FormGroup;
+  router = inject(Router)
 
   constructor() {
     this.postForm = new FormGroup(
@@ -58,7 +60,7 @@ export class FormCreateProjectComponent {
   async setDataPost() {
     try {
       const project = await this.projectService.createNewProject(this.postForm.value);
-      alert("Proyecto creado con exito");
+      Swal.fire("", "Se ha creado correctamente el proyecto", "success");
       this.postForm.reset();
     } catch (error) {
       Swal.fire("Error", "Error al crear el proyecto", "error");
@@ -71,16 +73,19 @@ export class FormCreateProjectComponent {
     );
   }
   //validador de fechas de start y end
-    validateStartEnd(formFields: AbstractControl) {
-      const start = formFields.get('start')?.value;
-      const end = formFields.get('end')?.value;
-  
-      if (!(start && end)) return null; //se comprueba primero que los campos no vengan vacíos
-  
-      //se convierten las fechas a milisegundos y se compara si endDate es anterior a startDate
-      const startDate = new Date(start).getTime();
-      const endDate = new Date(end).getTime();
-  
-      return endDate < startDate ? { validatestartend: true } : null;
-    }
+  validateStartEnd(formFields: AbstractControl) {
+    const start = formFields.get('start')?.value;
+    const end = formFields.get('end')?.value;
+
+    if (!(start && end)) return null; //se comprueba primero que los campos no vengan vacíos
+
+    //se convierten las fechas a milisegundos y se compara si endDate es anterior a startDate
+    const startDate = new Date(start).getTime();
+    const endDate = new Date(end).getTime();
+
+    return endDate < startDate ? { validatestartend: true } : null;
+  }
+  cancel() {
+    this.router.navigateByUrl('/projects');
+  }
 }
