@@ -11,6 +11,7 @@ import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
 import { EditPasswordComponent } from './pages/edit-password/edit-password.component';
 import { RegistroHorasProyectoComponent } from './pages/registro-horas-proyecto/registro-horas-proyecto.component';
+import { HoursRecordedComponent } from './pages/hours-recorded/hours-recorded.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -52,5 +53,11 @@ export const routes: Routes = [
     component: RegistroHorasProyectoComponent,
     canActivate: [authGuard],
   },
+  { path: 'users/edit/:id', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'edit-user', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'projects', component: ProjectsListComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'projects/edit/:projectId', component: EditProjectComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'edit-password', component: EditPasswordComponent, canActivate: [authGuard] },
+  { path: 'hours-registered',component: HoursRecordedComponent, canActivate: [authGuard] },
   { path: '**', component: NotFoundComponent, canActivate: [authGuard] },
 ];
