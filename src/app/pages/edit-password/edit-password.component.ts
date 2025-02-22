@@ -51,6 +51,7 @@ export class EditPasswordComponent {
 
         if (currentUser?.id) {
           this.userId = currentUser.id;
+          this.passwordForm.patchValue({ username: currentUser.username }); // Asignar el username al formulario
           console.log('ID del usuario establecido:', this.userId);
         } else {
           console.log('No se encontró el ID del usuario');

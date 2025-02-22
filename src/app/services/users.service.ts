@@ -87,27 +87,32 @@ export class UsersService {
     return true;
   }
 
-  changePassword(userId: number, currentPassword: string, newPassword: string){
+  changePassword(userId: number, currentPassword: string, newPassword: string) {
     console.log('Service - changePassword iniciado:', {
       userId,
       currentPassword,
       newPassword
     });
 
+    const token = localStorage.getItem('store_token');
+
     return lastValueFrom(
-      this.http.post<IUser>(`${this.baseUrl}/users/change-password`, {
-        userId,
-        currentPassword,
-        newPassword
+      this.http.post<IUser>(
+        `${this.baseUrl}/users/change-password`,
+        { userId, currentPassword, newPassword },
+        { headers: { Authorization: `Bearer ${token}` } }  // Enviar el token al backend
+      )
+    )
+      .then(response => {
+        console.log('Service - Respuesta exitosa:', response);
+        return response;
       })
-    ).then(response => {
-      console.log('Service - Respuesta exitosa:', response);
-      return response;
-    }).catch(error => {
-      console.error('Service - Error en changePassword:', error);
-      throw error;
-    });
+      .catch(error => {
+        console.error('Service - Error en changePassword:', error);
+        throw error;
+      });
   }
+
 
   getLoggedUser() {
     const token = localStorage.getItem('store_token')!;
