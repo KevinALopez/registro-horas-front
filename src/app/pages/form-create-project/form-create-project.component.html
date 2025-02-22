@@ -1,5 +1,3 @@
-<app-header></app-header>
-<app-nav-sidebar></app-nav-sidebar>
 <div class="my-5 pt-5">
     <div class="container">
         <div class="col-md-8 col-lg-7 offset-md-3 offset-lg-4">
@@ -9,21 +7,21 @@
                     <label class="form-label" for="name">Nombre:</label>
                     <input class="form-control" id="name" formControlName="name" type="text" />
                     @if(validate('name')) {
-                    <p class="text-danger">*minimo 3 caracteres</p>
+                    <p class="text-danger">*Mínimo 3 caracteres</p>
                     }
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="description">Descripcion:</label>
                     <textarea class="form-control" id="description" formControlName="description"></textarea>
                     @if(validate('description')) {
-                    <p class="text-danger">*minimo 3 caracteres</p>
+                    <p class="text-danger">*Mínimo 3 caracteres</p>
                     }
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="start">Fecha Start:</label>
                     <input class="form-control" id="start" formControlName="start" type="datetime-local" />
                     @if(validate('start')) {
-                    <p class="text-danger">*el campo es obligatorio</p>
+                    <p class="text-danger">*El campo es obligatorio</p>
                     }
                 </div>
                 <div class="mb-3">
