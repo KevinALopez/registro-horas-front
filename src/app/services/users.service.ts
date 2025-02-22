@@ -87,26 +87,28 @@ export class UsersService {
     return true;
   }
 
-  changePassword(userId: number, currentPassword: string, newPassword: string){
+  changePassword(userId: number, currentPassword: string, newPassword: string) {
     console.log('Service - changePassword iniciado:', {
       userId,
       currentPassword,
-      newPassword
+      newPassword,
     });
 
     return lastValueFrom(
       this.http.post<IUser>(`${this.baseUrl}/users/change-password`, {
         userId,
         currentPassword,
-        newPassword
+        newPassword,
       })
-    ).then(response => {
-      console.log('Service - Respuesta exitosa:', response);
-      return response;
-    }).catch(error => {
-      console.error('Service - Error en changePassword:', error);
-      throw error;
-    });
+    )
+      .then((response) => {
+        console.log('Service - Respuesta exitosa:', response);
+        return response;
+      })
+      .catch((error) => {
+        console.error('Service - Error en changePassword:', error);
+        throw error;
+      });
   }
 
   getLoggedUser() {

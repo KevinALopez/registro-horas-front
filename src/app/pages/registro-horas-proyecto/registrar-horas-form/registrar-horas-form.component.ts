@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-registrar-horas-form',
   imports: [],
   templateUrl: './registrar-horas-form.component.html',
-  styleUrl: './registrar-horas-form.component.css'
+  styleUrl: './registrar-horas-form.component.css',
 })
-export class RegistrarHorasFormComponent {
-
-}
+export class RegistrarHorasFormComponent {}
