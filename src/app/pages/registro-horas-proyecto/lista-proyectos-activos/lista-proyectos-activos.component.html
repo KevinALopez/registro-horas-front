@@ -1,1 +1,18 @@
-<p>lista-proyectos-activos works!</p>
+<section class="container text-center active-pojects-list">
+  <div class="container mx-auto mt-4 px-0 border shadow row position-relative">
+    <app-search-bar (onInput)="filterProjects($event)"></app-search-bar>
+    @for (project of projects; track project.id) {
+    <article class="col-12 px-0">
+      <app-proyecto-activo
+        [project]="project"
+        [selected]="project.id === selectedProject.id"
+        (click)="selectProject(project)"
+      ></app-proyecto-activo>
+    </article>
+    } @empty {
+    <article class="col-12 px-0">
+      <p class="text-center pt-3">No se encontraron proyectos.</p>
+    </article>
+    }
+  </div>
+</section>
