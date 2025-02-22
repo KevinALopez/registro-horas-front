@@ -1,20 +1,11 @@
 <div class="my-5 pt-5">
   <div class="container">
-    <div class="col-md-8 col-lg-7 offset-2 offset-md-3 offset-lg-4">
+    <div class="col-md-8 col-lg-7 offset-0 offset-md-4 offset-lg-4">
       <h2 class="mt-4 text-center">Editar Proyecto</h2>
-      <form
-        [formGroup]="editProjectForm"
-        (ngSubmit)="onSubmit()"
-        class="border rounded p-4"
-      >
+      <form [formGroup]="editProjectForm" (ngSubmit)="onSubmit()" class="border rounded p-4">
         <div class="mb-3">
           <label for="name" class="form-label">Nombre de proyecto</label>
-          <input
-            type="text"
-            id="name"
-            class="form-control"
-            formControlName="name"
-          />
+          <input type="text" id="name" class="form-control" formControlName="name" />
           @if(checkFieldError('name', 'required')){
           <p class="error">Campo obligatorio</p>
           } @if(checkFieldError('name', 'minlength')){
@@ -26,12 +17,7 @@
 
         <div class="mb-3">
           <label for="description" class="form-label">Descripción</label>
-          <input
-            type="text"
-            id="description"
-            class="form-control"
-            formControlName="description"
-          />
+          <input type="text" id="description" class="form-control" formControlName="description" />
 
           @if(checkFieldError('description', 'required')){
           <p class="error">Campo obligatorio</p>
@@ -44,22 +30,12 @@
 
         <div class="mb-3">
           <label for="start" class="form-label">Inicio proyecto</label>
-          <input
-            type="datetime-local"
-            id="start"
-            class="form-control"
-            formControlName="start"
-          />
+          <input type="datetime-local" id="start" class="form-control" formControlName="start" />
         </div>
 
         <div class="mb-3">
           <label for="end" class="form-label">Fin de proyecto</label>
-          <input
-            type="datetime-local"
-            id="end"
-            class="form-control"
-            formControlName="end"
-          />
+          <input type="datetime-local" id="end" class="form-control" formControlName="end" />
         </div>
 
         <div class="mb-3">
@@ -73,12 +49,7 @@
 
         <div class="mb-3">
           <label for="estimatedHours" class="form-label">Horas estimadas</label>
-          <input
-            type="number"
-            id="estimatedHours"
-            class="form-control"
-            formControlName="estimatedHours"
-          />
+          <input type="number" id="estimatedHours" class="form-control" formControlName="estimatedHours" />
           @if(checkFieldError('estimatedHours', 'required')){
           <p class="error">Campo obligatorio</p>
           } @if(checkFieldError('estimatedHours', 'pattern')){
@@ -88,12 +59,7 @@
 
         <div class="mb-3">
           <label for="workedHours" class="form-label">Horas trabajadas</label>
-          <input
-            type="number"
-            id="workedHours"
-            class="form-control"
-            formControlName="workedHours"
-          />
+          <input type="number" id="workedHours" class="form-control" formControlName="workedHours" />
           @if(checkFieldError('workedHours', 'required')){
           <p class="error">Campo obligatorio</p>
           } @if(checkFieldError('workedHours', 'pattern')){
@@ -108,11 +74,7 @@
         }
 
         <div class="d-flex justify-content-between">
-          <button
-            type="submit"
-            class="btn btn-primary"
-            [disabled]="editProjectForm.hasError('validatestartend')"
-          >
+          <button type="submit" class="btn btn-primary" [disabled]="editProjectForm.hasError('validatestartend')">
             Actualizar
           </button>
           <button type="button" class="btn btn-secondary" (click)="cancel()">

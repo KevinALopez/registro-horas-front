@@ -4,12 +4,12 @@ import Swal from 'sweetalert2';
 import { inject } from '@angular/core';
 
 export interface CustomPayload extends JwtPayload {
+  id: number;
   username: string;
   role: string;
 }
 
 export const adminGuard: CanActivateFn = async (route, state) => {
-
   const router = inject(Router);
 
   const token = localStorage.getItem('store_token')!;

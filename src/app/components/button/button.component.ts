@@ -9,5 +9,4 @@ import { Component, Input, input } from '@angular/core';
 export class ButtonComponent {
   @Input() className: string = 'botonPro';
   @Input() text: string = 'Entrar';
-  @Input() onClick!: () => void;
 }

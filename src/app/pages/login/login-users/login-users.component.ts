@@ -25,7 +25,7 @@ export class LoginUsersComponent {
   async onSubmit() {
     try {
       const response = await this.UsersService.login(this.loginForm.value);
-      Swal.fire('login', 'login Correcto', 'success');
+      await Swal.fire('login', 'login Correcto', 'success');
       localStorage.setItem('store_token', response.token!);
       this.router.navigateByUrl('/home');
     } catch (error) {

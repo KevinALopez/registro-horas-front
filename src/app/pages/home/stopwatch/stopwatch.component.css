@@ -1,7 +1,7 @@
 .stopwatch {
-  max-width: 400px;
+  font-size: 2rem;
 
-  p {
-    font-size: 4rem;
+  button {
+    font-size: 0.75rem;
   }
 }

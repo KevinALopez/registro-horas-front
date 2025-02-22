@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, input, Output } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, EventEmitter, inject, Input, input, Output } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-nav-sidebar',
@@ -8,6 +9,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './nav-sidebar.component.css',
 })
 export class NavSidebarComponent {
+  router = inject(Router)
+  usersService = inject(UsersService)
+
   @Input() displaySideNavbar = false;
   @Output() onCloseSideNavbar = new EventEmitter();
   @Output() onLogout = new EventEmitter();

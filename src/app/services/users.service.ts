@@ -94,4 +94,11 @@ export class UsersService {
       })
     );*/
   }
+
+  getLoggedUser() {
+    const token = localStorage.getItem('store_token')!;
+    const payload = jwtDecode<CustomPayload>(token);
+
+    return this.getById(payload.id);
+  }
 }
