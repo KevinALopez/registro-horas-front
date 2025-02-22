@@ -12,8 +12,10 @@
 
 @media (min-width: 768px) {
   .register-hours-form {
+    max-width: 500px;
+
     h1 {
-      max-width: none;
+      max-width: 450px;
     }
   }
 }

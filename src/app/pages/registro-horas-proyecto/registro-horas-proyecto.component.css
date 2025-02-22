@@ -1,5 +1,15 @@
 .register-hours {
   margin-top: 6rem;
+}
 
-  max-width: calc(100% - 200px);
+@media (min-width: 768px) {
+  .register-hours {
+    max-width: calc(100% - 200px);
+    float: right;
+
+    > div {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
 }
