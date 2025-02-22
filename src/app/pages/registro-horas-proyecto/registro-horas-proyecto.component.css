@@ -1,3 +1,5 @@
 .register-hours {
   margin-top: 6rem;
+
+  max-width: calc(100% - 200px);
 }

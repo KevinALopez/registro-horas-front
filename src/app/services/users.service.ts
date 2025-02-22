@@ -121,7 +121,7 @@ export class UsersService {
 
   getUnassignedTime() {
     return lastValueFrom(
-      this.http.get<availableTime>(`${this.baseUrl}/users/unassigned`)
+      this.http.get<availableTime>(`${this.baseUrl}/hours/unassigned`)
     );
   }
 }
