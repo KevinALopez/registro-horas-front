@@ -5,6 +5,7 @@ import { IUser } from '../interfaces/iuser';
 import { User } from '../interfaces/user.interface';
 import { jwtDecode } from 'jwt-decode';
 import { CustomPayload } from '../guards/admin.guard';
+import { availableTime } from '../pages/registro-horas-proyecto/registrar-horas-form/registrar-horas-form.component';
 type LoginBody = {
   username: string;
   password: string;
@@ -116,5 +117,11 @@ export class UsersService {
     const payload = jwtDecode<CustomPayload>(token);
 
     return this.getById(payload.id);
+  }
+
+  getUnassignedTime() {
+    return lastValueFrom(
+      this.http.get<availableTime>(`${this.baseUrl}/users/unassigned`)
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { IProject } from '../../../interfaces/iproject';
 import { ProjectsService } from '../../../services/projects.service';
 import Swal from 'sweetalert2';
@@ -12,6 +12,8 @@ import { ProyectoActivoComponent } from './proyecto-activo/proyecto-activo.compo
   styleUrl: './lista-proyectos-activos.component.css',
 })
 export class ListaProyectosActivosComponent {
+  @Output() onSelectProject = new EventEmitter<IProject>();
+
   projects: IProject[] = [];
   selectedProject: IProject = {} as IProject;
 
@@ -30,10 +32,12 @@ export class ListaProyectosActivosComponent {
   selectProject(project: IProject) {
     if (this.selectedProject.id === project.id) {
       this.selectedProject = {} as IProject;
+      this.onSelectProject.emit(this.selectedProject);
       return;
     }
 
     this.selectedProject = project;
+    this.onSelectProject.emit(this.selectedProject);
   }
 
   async filterProjects(filter: string) {

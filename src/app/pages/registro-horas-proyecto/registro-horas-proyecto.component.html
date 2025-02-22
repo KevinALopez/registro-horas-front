@@ -1,4 +1,10 @@
 <section class="container register-hours">
-  <app-registrar-horas-form></app-registrar-horas-form>
-  <app-lista-proyectos-activos></app-lista-proyectos-activos>
+  @if (isProjectSelected) {
+  <app-registrar-horas-form
+    [project]="selectedProject"
+  ></app-registrar-horas-form>
+  }
+  <app-lista-proyectos-activos
+    (onSelectProject)="getSelectedProject($event)"
+  ></app-lista-proyectos-activos>
 </section>
