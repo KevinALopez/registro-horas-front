@@ -1,0 +1,79 @@
+@if (availableTime.hours !== 0 || availableTime.minutes !== 0) {
+<form
+  class="border rounded p-4 d-flex flex-column justify-content-center align-items-center gap-2 mt-3 register-hours-form"
+  [formGroup]="formModel"
+  (ngSubmit)="logHours()"
+>
+  <h4 class="text-center">{{ project.name }}</h4>
+  <div class="d-flex flex-column flex-md-row justify-content-center gap-2">
+    @if (availableTime.hours > 0) {
+    <div>
+      <label class="form-label" for="hours"
+        >Horas({{ availableTime.hours }}):</label
+      >
+      <input
+        class="form-control"
+        type="number"
+        id="hours"
+        formControlName="hours"
+      />
+      @if(checkErrorField('hours', 'required')) {
+      <p class="error">Campo obligatorio</p>
+      } @if(checkErrorField('hours', 'min')) {
+      <p class="error">El campo debe ser mayor a 0</p>
+      } @if(checkErrorField('hours', 'max')) {
+      <p class="error">
+        El campo debe ser menor o igual a {{ availableTime.hours }}
+      </p>
+      }
+    </div>
+    } @if (availableTime.minutes > 0) {
+    <div>
+      <label class="form-label" for="minutes"
+        >Minutos({{ availableTime.minutes }}):</label
+      >
+      <input
+        class="form-control"
+        type="number"
+        id="minutes"
+        formControlName="minutes"
+      />
+      @if(checkErrorField('minutes', 'required')) {
+      <p class="error">Campo obligatorio</p>
+      } @if(checkErrorField('minutes', 'min')) {
+      <p class="error">El campo debe ser mayor a 0</p>
+      } @if(checkErrorField('minutes', 'max')) {
+      <p class="error">
+        El campo debe ser menor o igual a {{ availableTime.minutes }}
+      </p>
+      }
+    </div>
+    }
+    <div>
+      <label class="form-label" for="date">Fecha Trabajada:</label>
+      <input
+        class="form-control"
+        type="date"
+        id="date"
+        [max]="getToday()"
+        formControlName="date"
+      />
+      @if(checkErrorField('date', 'required')) {
+      <p class="error">Campo obligatorio</p>
+      } @if(checkErrorField('date', 'dateValidator')) {
+      <p class="error">La fecha debe ser menor o igual a la fecha de hoy.</p>
+      }
+    </div>
+  </div>
+  <div>
+    <input
+      type="submit"
+      value="Registrar"
+      class="btn btn-primary mt-3 mt-md-2"
+      [disabled]="formModel.invalid"
+    />
+  </div>
+</form>
+} @if(availableTime.hours === 0 && availableTime.minutes === 0) {
+<h5 class="text-center border rounded p-4 mt-3">No hay horas disponibles!</h5>
+}

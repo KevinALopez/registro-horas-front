@@ -1,0 +1,21 @@
+.project {
+  margin: auto;
+
+  h1 {
+    font-size: 1.5rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.selected {
+  background-color: #007bff;
+  color: #fff;
+}

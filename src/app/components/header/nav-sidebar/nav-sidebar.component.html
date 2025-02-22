@@ -24,7 +24,17 @@
       <span class="icon">
         <i class="fa-solid fa-clock"></i>
       </span>
-      <span class="description">Horas registradas</span>
+      <span class="description">Horas Registradas</span>
+    </a>
+    <a
+      class="nav-link"
+      (click)="closeSideNavbar()"
+      [routerLink]="['/users/hours/log']"
+    >
+      <span class="icon">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </span>
+      <span class="description">Registrar Horas Trabajadas</span>
     </a>
     @if(usersService.isAdmin()){
     <a

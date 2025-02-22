@@ -5,6 +5,7 @@ import { IUser } from '../interfaces/iuser';
 import { User } from '../interfaces/user.interface';
 import { jwtDecode } from 'jwt-decode';
 import { CustomPayload } from '../guards/admin.guard';
+import { availableTime } from '../pages/registro-horas-proyecto/registrar-horas-form/registrar-horas-form.component';
 type LoginBody = {
   username: string;
   password: string;
@@ -87,62 +88,40 @@ export class UsersService {
     return true;
   }
 
-  /*changePassword(userId: number, currentPassword: string, newPassword: string) {
+  changePassword(currentPassword: string, newPassword: string) {
     console.log('Service - changePassword iniciado:', {
-      userId,
       currentPassword,
-      newPassword
+      newPassword,
     });
 
     const token = localStorage.getItem('store_token');
 
     return lastValueFrom(
-      this.http.post<IUser>(
-        `${this.baseUrl}/users/change-password`,
-        { userId, currentPassword, newPassword },
-        { headers: { Authorization: `Bearer ${token}` } }  // Enviar el token al backend
+      this.http.put<{ message: string }>(
+        `${this.baseUrl}/users/change-password`, // 📌 Ya no se necesita el ID en la URL
+        { currentPassword, newPassword },
+        { headers: { Authorization: `Bearer ${token}` } } // 📌 Token en headers
       )
     )
-      .then(response => {
+      .then((response) => {
         console.log('Service - Respuesta exitosa:', response);
         return response;
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Service - Error en changePassword:', error);
-        throw error;
       });
-  }*/
-      changePassword(currentPassword: string, newPassword: string) {
-        console.log('Service - changePassword iniciado:', {
-          currentPassword,
-          newPassword
-        });
-
-        const token = localStorage.getItem('store_token');
-
-        return lastValueFrom(
-          this.http.put<{ message: string }>(
-            `${this.baseUrl}/users/change-password`, // 📌 Ya no se necesita el ID en la URL
-            { currentPassword, newPassword },
-            { headers: { Authorization: `Bearer ${token}` } }  // 📌 Token en headers
-          )
-        )
-          .then(response => {
-            console.log('Service - Respuesta exitosa:', response);
-            return response;
-          })
-          .catch(error => {
-            console.error('Service - Error en changePassword:', error);
-            throw error;
-          });
-    }
-
-
+  }
 
   getLoggedUser() {
     const token = localStorage.getItem('store_token')!;
     const payload = jwtDecode<CustomPayload>(token);
 
     return this.getById(payload.id);
+  }
+
+  getUnassignedTime() {
+    return lastValueFrom(
+      this.http.get<availableTime>(`${this.baseUrl}/hours/unassigned`)
+    );
   }
 }

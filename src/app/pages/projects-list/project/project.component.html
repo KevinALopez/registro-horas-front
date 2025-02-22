@@ -1,12 +1,19 @@
-<div class="container d-flex flex-row gap-2 justify-content-between border p-3 project">
+<div
+  class="container d-flex flex-row gap-2 justify-content-between border p-3 project"
+>
   <div class="d-flex flex-column align-items-start">
-    <h1>{{ project.name }}</h1>
+    <h1 class="overflow-hidden">{{ project.name }}</h1>
     <span [class]="getProjectStatusClass()">{{
       getProjectStatusFormatted()
-      }}</span>
+    }}</span>
   </div>
   <div class="d-flex gap-1 align-items-center options">
-    <button class="btn btn-primary" [routerLink]="['/projects/edit/',project.id]">Editar</button>
+    <button
+      class="btn btn-primary"
+      [routerLink]="['/projects/edit/', project.id]"
+    >
+      Editar
+    </button>
     <button class="btn btn-danger" (click)="deleteProject(project.id!)">
       Eliminar
     </button>
