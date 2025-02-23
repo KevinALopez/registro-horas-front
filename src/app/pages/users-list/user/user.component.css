@@ -9,3 +9,11 @@
         padding: 0.2rem 0.4rem;
     }
 }
+
+@media (min-width: 375px) {
+    .user {
+        button {
+            padding: 0.4rem 0.6rem;
+        }
+    }
+}
