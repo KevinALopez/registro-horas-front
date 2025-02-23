@@ -1,15 +1,16 @@
 <section class="home d-flex flex-column gap-3 container">
   <div>
-    <h1 class="text-center">
+    <h1 class="text-center mt-4 ">
       Bienvenido
       {{ loggedUser.username[0].toUpperCase() + loggedUser.username.slice(1) }}!
     </h1>
-    <div>
+    <div class="marcoGradiante mx-auto">
       <app-stopwatch />
     </div>
-    <div class="text-center">
+
+    <div class="text-center mt-4">
       <h4>Historial de Mes Actual</h4>
-      <div>
+      <div class=>
         <app-hours-history />
       </div>
     </div>

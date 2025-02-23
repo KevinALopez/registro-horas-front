@@ -53,9 +53,9 @@ export class ProjectComponent {
 
   getProjectStatusClass() {
     const baseClass = 'text-white px-2 py-1 rounded';
-    if (this.project.status === 'active') return `bg-primary ${baseClass}`;
-    if (this.project.status === 'cancel') return `bg-danger ${baseClass}`;
+    if (this.project.status === 'active') return `statusActivo ${baseClass}`;
+    if (this.project.status === 'cancel') return `statusCancelado ${baseClass}`;
 
-    return `bg-success ${baseClass}`;
+    return `statusTerminado ${baseClass}`;
   }
 }

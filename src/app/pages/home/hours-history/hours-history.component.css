@@ -1,7 +1,7 @@
 .records {
   color: black;
 
-  > div {
+  >div {
     max-height: 55vh;
     max-width: 600px;
     overflow: scroll;

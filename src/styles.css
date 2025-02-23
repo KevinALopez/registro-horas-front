@@ -1,1 +1,98 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #f1f1f1;
+}
+
+.botonPro {
+    border-radius: 10px;
+    padding: 0.2rem 1rem;
+    background-color: transparent;
+    color: rgba(6, 6, 74, 0.5);
+    border: 2px solid rgba(3, 3, 97, 0.466);
+    background: linear-gradient(to top right, rgba(54, 54, 209, 0.742), rgba(6, 6, 74, 0.704));
+    font-weight: bold;
+    color: white;
+
+}
+
+.botonPro:hover {
+    color: white;
+    border-color: white;
+    transition: border-color 0.8s linear;
+}
+
+.redBotonPro {
+    border-radius: 10px;
+    padding: 0.2rem 1rem;
+    border: 2px solid rgb(37, 0, 0);
+    background: linear-gradient(to top right, rgba(61, 60, 60, 0.801), rgba(143, 143, 143, 0.904));
+    font-weight: bold;
+    color: white;
+}
+
+
+.redBotonPro:hover {
+    color: white;
+    border-color: white;
+    background: linear-gradient(to top right, rgba(99, 0, 0, 0.904), rgba(252, 0, 0, 0.801));
+    transition: border-color 0.8s linear;
+
+}
+
+.rellenoListas {
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+.sobreSeccion:hover {
+    background: linear-gradient(to top right, rgb(6, 6, 88), rgb(27, 47, 163), rgba(94, 190, 245, 0.863));
+    color: white;
+    border-radius: 10px;
+
+}
+
+.bordesWeb {
+    border-bottom: 2px solid rgb(0, 0, 111);
+
+    border-radius: 10px;
+}
+
+.statusActivo {
+    color: white;
+    border-color: white;
+    background: linear-gradient(to top right, rgba(75, 126, 236, 0.904), rgba(51, 42, 213, 0.801));
+    border-radius: 10px;
+    border: 2px solid black;
+
+}
+
+.statusCancelado {
+    color: white;
+    border-color: white;
+    background: linear-gradient(to top right, rgba(99, 0, 0, 0.904), rgba(252, 0, 0, 0.801));
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.statusTerminado {
+    color: white;
+    border-color: white;
+    background: linear-gradient(to top right, rgba(34, 164, 60, 0.904), rgba(17, 84, 3, 0.801));
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+
+
+.circular {
+    border-radius: 15px;
+}
+
+.circuloPerfecto {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+
+}
