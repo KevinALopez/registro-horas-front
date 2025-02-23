@@ -1,16 +1,7 @@
-<div class="d-flex flex-wrap justify-content-between gap-2">
-  <input
-    type="text"
-    placeholder="Escribe para buscar por nombre..."
-    class="form-control"
-    (input)="onNameChange($event)"
-  />
-  <select
-    name="status"
-    id=""
-    class="form-select"
-    (change)="onStatusChange($event)"
-  >
+<div class="d-flex flex-wrap justify-content-between gap-2 ">
+  <input type="text" placeholder="Escribe para buscar por nombre..." class="form-control bordesWeb"
+    (input)="onNameChange($event)" />
+  <select name="status" id="" class="form-select bordesWeb" (change)="onStatusChange($event)">
     <option value="all">Todos</option>
     @for (state of states; track state.value) {
     <option [value]="state.value">{{ state.name }}</option>

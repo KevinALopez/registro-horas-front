@@ -8,3 +8,18 @@ header {
   top: 0;
   z-index: 1;
 }
+
+.botonPro {
+  border-radius: 10px;
+  padding: 0.2rem 1rem;
+  border: 2px solid rgba(3, 3, 97, 0.466);
+  background: linear-gradient(to top right, rgba(85, 85, 219, 0.5), rgba(6, 6, 74, 0.5));
+  font-weight: bold;
+  color: white;
+}
+
+.botonPro:hover {
+  color: white;
+  border-color: white;
+  transition: border-color 1.9s linear;
+}
