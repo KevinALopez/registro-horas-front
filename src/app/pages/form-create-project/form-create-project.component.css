@@ -1,0 +1,21 @@
+.add-project {
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+
+  > div {
+    > div {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .add-project {
+    margin-top: 7rem;
+    width: 100%;
+    max-width: calc(100% - 200px);
+    float: right;
+  }
+}

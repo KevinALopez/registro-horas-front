@@ -1,69 +1,110 @@
-<div class="my-5 pt-5 ">
-    <div class="container">
-        <div class="col-md-8 col-lg-7 offset-md-3 offset-lg-4">
-            <h2 class="mt-2 text-center mb-4">Añadir Proyecto</h2>
-            <form class="border rounded p-4 rellenoListas" [formGroup]="postForm" (ngSubmit)="setDataPost()">
-                <div class="mb-3">
-                    <label class="form-label" for="name">Nombre:</label>
-                    <input class="form-control " id="name" formControlName="name" type="text" />
-                    @if(validate('name')) {
-                    <p class="text-danger">*Mínimo 3 caracteres</p>
-                    }
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="description">Descripcion:</label>
-                    <textarea class="form-control " id="description" formControlName="description"></textarea>
-                    @if(validate('description')) {
-                    <p class="text-danger">*Mínimo 3 caracteres</p>
-                    }
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="start">Fecha Start:</label>
-                    <input class="form-control  " id="start" formControlName="start" type="datetime-local" />
-                    @if(validate('start')) {
-                    <p class="text-danger">*El campo es obligatorio</p>
-                    }
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="end">Fecha End:</label>
-                    <input class="form-control " id="end" formControlName="end" type="datetime-local" />
-                    @if(validate('end')) {
-                    <p class="text-danger">*el campo es obligatorio</p>
-                    }
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label" for="status">Estado:</label>
-                    <select class="form-control " id="status" formControlName="status">
-                        <option value="active">Activo</option>
-                        <option disabled value="finish">Terminado</option>
-                        <option disabled value="cancel">Cancelado</option>
-                    </select>
-                    @if(validate('status')) {
-                    <p class="text-danger">*este campo es obligatorio</p>
-                    }
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="estimatedHours">Horas estimadas:</label>
-                    <input class="form-control " id="estimatedHours" formControlName="estimatedHours" type="text" />
-                    @if(validate('estimatedHours')) {
-                    <p class="text-danger">*solo admite numeros > 0 && < 1000 </p>
-                            }
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="hoursWorked">Horas trabajadas:</label>
-                    <input class="form-control " id="hoursWorked" formControlName="workedHours" type="text" />
-                    @if(validate('workedHours')) {
-                    <p class="text-danger">*solo admite numeros > 0 && < 1000</p>
-                            }
-                </div>
-                <div class="d-flex justify-content-between">
-                    <button class="statusActivo" type="submit" [disabled]="postForm.invalid">Añadir</button>
-                    <button type="button" class="statusCancelado" (click)="cancel()">
-                        Cancelar
-                    </button>
-                </div>
-            </form>
+<div class="container add-project">
+  <div class="container">
+    <div class="col-md-8 col-lg-7 offset-md-3 offset-lg-4">
+      <h2 class="mt-2 text-center mb-4">Añadir Proyecto</h2>
+      <form
+        class="border rounded p-4 rellenoListas"
+        [formGroup]="postForm"
+        (ngSubmit)="setDataPost()"
+      >
+        <div class="mb-3">
+          <label class="form-label" for="name">Nombre:</label>
+          <input
+            class="form-control"
+            id="name"
+            formControlName="name"
+            type="text"
+          />
+          @if(validate('name')) {
+          <p class="text-danger">*Mínimo 3 caracteres</p>
+          }
         </div>
+        <div class="mb-3">
+          <label class="form-label" for="description">Descripcion:</label>
+          <textarea
+            class="form-control"
+            id="description"
+            formControlName="description"
+          ></textarea>
+          @if(validate('description')) {
+          <p class="text-danger">*Mínimo 3 caracteres</p>
+          }
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="start">Fecha Start:</label>
+          <input
+            class="form-control"
+            id="start"
+            formControlName="start"
+            type="datetime-local"
+          />
+          @if(validate('start')) {
+          <p class="text-danger">*El campo es obligatorio</p>
+          }
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="end">Fecha End:</label>
+          <input
+            class="form-control"
+            id="end"
+            formControlName="end"
+            type="datetime-local"
+          />
+          @if(validate('end')) {
+          <p class="text-danger">*el campo es obligatorio</p>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="status">Estado:</label>
+          <select class="form-control" id="status" formControlName="status">
+            <option value="active">Activo</option>
+            <option disabled value="finish">Terminado</option>
+            <option disabled value="cancel">Cancelado</option>
+          </select>
+          @if(validate('status')) {
+          <p class="text-danger">*este campo es obligatorio</p>
+          }
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="estimatedHours"
+            >Horas estimadas:</label
+          >
+          <input
+            class="form-control"
+            id="estimatedHours"
+            formControlName="estimatedHours"
+            type="text"
+          />
+          @if(validate('estimatedHours')) {
+          <p class="text-danger">*solo admite numeros > 0 && < 1000</p>
+          }
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="hoursWorked">Horas trabajadas:</label>
+          <input
+            class="form-control"
+            id="hoursWorked"
+            formControlName="workedHours"
+            type="text"
+          />
+          @if(validate('workedHours')) {
+          <p class="text-danger">*solo admite numeros > 0 && < 1000</p>
+          }
+        </div>
+        <div class="d-flex justify-content-between">
+          <button
+            class="statusActivo"
+            type="submit"
+            [disabled]="postForm.invalid"
+          >
+            Añadir
+          </button>
+          <button type="button" class="statusCancelado" (click)="cancel()">
+            Cancelar
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>

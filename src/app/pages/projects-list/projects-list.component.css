@@ -13,3 +13,11 @@
     }
   }
 }
+
+@media (min-width: 768px) {
+  .pojects-list {
+    width: 100%;
+    max-width: calc(100% - 200px);
+    float: right;
+  }
+}
