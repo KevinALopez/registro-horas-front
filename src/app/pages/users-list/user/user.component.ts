@@ -3,18 +3,18 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { IUser } from '../../../interfaces/iuser';
 import Swal from 'sweetalert2';
 import { UsersService } from '../../../services/users.service';
-
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrl: './user.component.css',
 })
 export class UserComponent {
   @Input() user!: IUser;
   @Output() userDeleted = new EventEmitter();
-  usersService = inject(UsersService)
+  usersService = inject(UsersService);
 
   async deleteById(id: number) {
     try {

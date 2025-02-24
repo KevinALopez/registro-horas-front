@@ -1,18 +1,17 @@
 <section class="container text-center users-list">
-    <h1 class="">Listado de Usuarios</h1>
-    <div class="container mx-auto mt-4 px-0 bordesWeb">
-        <app-filters-users (onFilterChange)="filterUsers($event)" />
-    </div>
-    <div class="container mx-auto mt-4 px-0 border shadow row rellenoListas">
-        @for (user of users; track user.id) {
-        <article class="col-12 px-0 sobreSeccion">
-            <app-user [user]="user" (userDeleted)="onProjectDeleted()">
-            </app-user>
-        </article>
-        }@empty {
-        <article class="col-12 px-0">
-            <p class="text-center pt-3">No se encontraron usuarios.</p>
-        </article>
-        }
-    </div>
+  <h1 class="">Listado de Usuarios</h1>
+  <div class="container mx-auto mt-4 px-0 bordesWeb">
+    <app-filters-users (onFilterChange)="filterUsers($event)" />
+  </div>
+  <div class="container mx-auto mt-4 px-0 border shadow row rellenoListas">
+    @for (user of users; track user.id) {
+    <article class="col-12 px-0 sobreSeccion">
+      <app-user [user]="user" (userDeleted)="onProjectDeleted()"> </app-user>
+    </article>
+    }@empty {
+    <article class="col-12 px-0">
+      <p class="text-center pt-3">No se encontraron usuarios.</p>
+    </article>
+    }
+  </div>
 </section>

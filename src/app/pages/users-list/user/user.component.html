@@ -1,9 +1,11 @@
-<div class="container d-flex flex-row gap-2 justify-content-between border p-3 user">
-    <h1 class="">{{user.username}}</h1>
-    <div class="d-flex gap-1">
-        <button class="botonPro">Editar</button>
-        <button class="redBotonPro" (click)="deleteById(user.id!)">
-            Eliminar
-        </button>
-    </div>
+<div
+  class="container d-flex flex-row gap-2 justify-content-between border p-3 user"
+>
+  <h1>{{ user.username }}</h1>
+  <div class="d-flex gap-1">
+    <button class="botonPro" [routerLink]="['/users/edit/', user.id]">
+      Editar
+    </button>
+    <button class="redBotonPro" (click)="deleteById(user.id!)">Eliminar</button>
+  </div>
 </div>
