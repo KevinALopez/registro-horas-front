@@ -1,0 +1,49 @@
+.profile{
+    margin-top: 7rem;
+   
+}
+.bg-dangerus{
+    background-color: rgba(227, 12, 12, 0.777)
+
+}
+.bg-dangerus-table{
+    background-color:rgb(10, 10, 32);
+
+}
+.table{
+    border-radius: 40px;
+}
+
+@media (width >= 768px){
+
+    .max{
+        max-width: calc(100% - 200px);
+        margin-left: 10rem;
+    }
+    .max-table{
+        margin-left: 12.5rem;
+    }
+    
+}
+@media (width >= 992px){
+
+    .max{
+        max-width: calc(100% - 200px);
+        margin-left: 7rem;
+    }
+    .max-table{
+        margin-left: 12rem;
+    }
+    
+}
+@media (width >= 1440px){
+
+    .max{
+        max-width: calc(100% - 200px);
+        margin-left: 4rem;
+    }
+    .max-table{
+        margin-left: 12rem;
+    }
+    
+}
