@@ -58,8 +58,12 @@
                             }
                 </div>
                 <div class="d-flex justify-content-between">
-                    <button class="statusActivo" type="submit" [disabled]="postForm.invalid">Añadir</button>
-                    <button type="button" class="statusCancelado" (click)="cancel()">
+                    <button type="submit" [class.botonPro]="postForm.valid" [class.invalid]="postForm.invalid"
+                        [disabled]="postForm.invalid">
+                        Añadir
+                    </button>
+
+                    <button type="redBotonPro" class="statusCancelado" (click)="cancel()">
                         Cancelar
                     </button>
                 </div>

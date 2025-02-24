@@ -1,0 +1,9 @@
+.invalid {
+    border-radius: 10px;
+    padding: 0.2rem 1rem;
+    border: 2px solid black;
+    background: linear-gradient(to top right, rgba(52, 52, 53, 0.742), rgba(121, 121, 122, 0.704));
+    font-weight: bold;
+    color: darkgray;
+    cursor: not-allowed;
+}
