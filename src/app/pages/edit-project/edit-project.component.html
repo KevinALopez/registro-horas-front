@@ -74,10 +74,10 @@
         }
 
         <div class="d-flex justify-content-between">
-          <button type="submit" class="statusActivo" [disabled]="editProjectForm.hasError('validatestartend')">
+          <button type="submit" class="btn btn-primary" [disabled]="editProjectForm.hasError('validatestartend')">
             Actualizar
           </button>
-          <button type="button" class="statusCancelado" (click)="cancel()">
+          <button type="button" class="btn btn-secondary" (click)="cancel()">
             Cancelar
           </button>
         </div>
