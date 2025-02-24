@@ -41,6 +41,19 @@ type IncompletePauseResponse = {
   end: null;
   type: string;
 };
+export type HoursOnProjectsResponse={
+  data: [
+    {
+      id: number,
+      hours: number,
+      date: string,
+      project: {
+        id: number,
+        name: string
+      }
+    }
+  ]
+}
 
 @Injectable({
   providedIn: 'root',
@@ -127,6 +140,15 @@ export class HoursService {
     return lastValueFrom(
       this.http.get<IncompletePauseResponse>(
         `${this.baseUrl}/shift/pause/incomplete`
+      )
+    );
+  }
+
+
+  getHoursOnProjects(){
+    return lastValueFrom(
+      this.http.get<HoursOnProjectsResponse>(
+        `${this.baseUrl}/worked/projects`
       )
     );
   }
