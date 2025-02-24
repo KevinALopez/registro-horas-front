@@ -1,9 +1,34 @@
 .invalid {
-    border-radius: 10px;
-    padding: 0.2rem 1rem;
-    border: 2px solid black;
-    background: linear-gradient(to top right, rgba(52, 52, 53, 0.742), rgba(121, 121, 122, 0.704));
-    font-weight: bold;
-    color: darkgray;
-    cursor: not-allowed;
+  border-radius: 10px;
+  padding: 0.2rem 1rem;
+  border: 2px solid black;
+  background: linear-gradient(
+    to top right,
+    rgba(52, 52, 53, 0.742),
+    rgba(121, 121, 122, 0.704)
+  );
+  font-weight: bold;
+  color: darkgray;
+  cursor: not-allowed;
+}
+.add-project {
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+
+  > div {
+    > div {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .add-project {
+    margin-top: 7rem;
+    width: 100%;
+    max-width: calc(100% - 200px);
+    float: right;
+  }
 }

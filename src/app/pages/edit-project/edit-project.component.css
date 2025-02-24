@@ -1,4 +1,25 @@
+.edit-project {
+  margin-top: 7rem;
+  margin-bottom: 3rem;
+
+  > div {
+    > div {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .edit-project {
+    width: 100%;
+    max-width: calc(100% - 200px);
+    float: right;
+  }
+}
+
 .error {
-    color: tomato;
-    font-size: 80%;
+  color: tomato;
+  font-size: 80%;
 }
