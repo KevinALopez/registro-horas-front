@@ -13,6 +13,8 @@ import { EditPasswordComponent } from './pages/edit-password/edit-password.compo
 import { RegistroHorasProyectoComponent } from './pages/registro-horas-proyecto/registro-horas-proyecto.component';
 import { HoursRecordedComponent } from './pages/hours-recorded/hours-recorded.component';
 import { InsertUserComponent } from './pages/insert-user/insert-user.component';
+import { CardComponent } from './components/card/card.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -52,6 +54,11 @@ export const routes: Routes = [
   {
     path: 'users/hours/log',
     component: RegistroHorasProyectoComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
     canActivate: [authGuard],
   },
   { path: 'users/edit/:id', component: EditUserComponent, canActivate: [authGuard, adminGuard] },

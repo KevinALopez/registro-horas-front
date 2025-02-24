@@ -1,1 +1,33 @@
-<p>profile works!</p>
+@if (ide) {
+<app-card [id]="ide"></app-card>
+}
+<div class="container">
+    <div class="col-md-8 col-lg-7 offset-md-3 offset-lg-4s">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Proyecto</th>
+                <th scope="col">Horas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+              </tr>
+            </tbody>
+          </table>
+</div>
+</div>
+
