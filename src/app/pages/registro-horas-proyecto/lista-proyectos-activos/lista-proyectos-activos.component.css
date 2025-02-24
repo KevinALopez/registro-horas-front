@@ -1,4 +1,12 @@
 .active-pojects-list {
+  max-height: 525px;
+  overflow: scroll;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   article:first-of-type {
     margin-top: 3rem;
   }
