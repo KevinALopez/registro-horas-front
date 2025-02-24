@@ -1,50 +1,45 @@
-<div class="container d-flex flex-column profile ">
-
-  <div class=" d-flex flex-column gap-5">
-
-      @if (ide) {
-      <div class="max">
-        <app-card [id]="ide"></app-card>
-      </div>
-      }
-      <div class="max-table">
-        <div class="">
-          <table class="table table-sm table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Fecha</th>
-                <th scope="col">Proyecto</th>
-                <th scope="col">Horas</th>
-              </tr>
-            </thead>
-            <tbody>
-              @for (record of hoursData; track record.id) {
-                @if(record.hours > 8){
-                  <tr>
-                    <td class="bg-dangerus">{{getFormatDate(record.date)}}</td>
-                    <td class="bg-dangerus" >{{record.project.name}}</td>
-                    <td class="bg-dangerus">{{record.hours}}</td>
-                  </tr>
-                }@else {
-                  <tr>
-                    <td >{{getFormatDate(record.date)}}</td>
-                    <td >{{record.project.name}}</td>
-                    <td>{{record.hours}}</td>
-                  </tr>
-                }
-              
-              }
-              <th></th>
-              <tr class="table-success">
-                <td class="text-danger">Horas extra ({{this.numeroIncidencias.toFixed(2)}}H)</td>
-                <td><strong>Total:</strong></td>
-                <td><strong>{{this.contador.toFixed(2)}}</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-      </div>
+<div class="container d-flex flex-column profile">
+  <div class="d-flex flex-column gap-5">
+    @if (ide) {
+    <div class="max">
+      <app-card [id]="ide"></app-card>
+    </div>
+    }
+    <div class="max-table">
+      <table class="table table-sm table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Proyecto</th>
+            <th scope="col">Horas</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (record of hoursData; track record.id) { @if(record.hours > 8){
+          <tr>
+            <td class="bg-dangerus">{{ getFormatDate(record.date) }}</td>
+            <td class="bg-dangerus">{{ record.project.name }}</td>
+            <td class="bg-dangerus">{{ record.hours }}</td>
+          </tr>
+          }@else {
+          <tr>
+            <td>{{ getFormatDate(record.date) }}</td>
+            <td>{{ record.project.name }}</td>
+            <td>{{ record.hours }}</td>
+          </tr>
+          } }
+          <th></th>
+          <tr class="table-success">
+            <td class="text-danger">
+              Horas extra ({{ this.numeroIncidencias.toFixed(2) }}H)
+            </td>
+            <td><strong>Total:</strong></td>
+            <td>
+              <strong>{{ this.contador.toFixed(2) }}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
-

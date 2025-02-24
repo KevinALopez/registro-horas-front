@@ -1,49 +1,27 @@
-.profile{
-    margin-top: 7rem;
-   
+.profile {
+  margin-top: 7rem;
+  margin-bottom: 3rem;
 }
-.bg-dangerus{
-    background-color: rgba(227, 12, 12, 0.777)
-
+.bg-dangerus {
+  background-color: rgba(227, 12, 12, 0.777);
 }
-.bg-dangerus-table{
-    background-color:rgb(10, 10, 32);
-
+.bg-dangerus-table {
+  background-color: rgb(10, 10, 32);
 }
-.table{
-    border-radius: 40px;
+.table {
+  border-radius: 40px;
 }
 
-@media (width >= 768px){
+@media (width >= 768px) {
+  .profile {
+    width: 100%;
+    max-width: calc(100% - 200px);
+    float: right;
+  }
 
-    .max{
-        max-width: calc(100% - 200px);
-        margin-left: 10rem;
-    }
-    .max-table{
-        margin-left: 12.5rem;
-    }
-    
-}
-@media (width >= 992px){
-
-    .max{
-        max-width: calc(100% - 200px);
-        margin-left: 7rem;
-    }
-    .max-table{
-        margin-left: 12rem;
-    }
-    
-}
-@media (width >= 1440px){
-
-    .max{
-        max-width: calc(100% - 200px);
-        margin-left: 4rem;
-    }
-    .max-table{
-        margin-left: 12rem;
-    }
-    
+  .max-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }

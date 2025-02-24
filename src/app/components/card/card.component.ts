@@ -2,10 +2,11 @@ import { Component, inject, Input, input } from '@angular/core';
 import { IUser } from '../../interfaces/iuser';
 import { UsersService } from '../../services/users.service';
 import Swal from 'sweetalert2';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-card',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
 })

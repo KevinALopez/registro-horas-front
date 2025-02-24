@@ -6,14 +6,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { jwtDecode } from 'jwt-decode';
 import { CustomPayload } from '../../guards/admin.guard';
 
 @Component({
   selector: 'app-edit-password',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './edit-password.component.html',
   styleUrl: './edit-password.component.css',
 })

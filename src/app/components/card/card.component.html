@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="col-md-8 col-lg-7 offset-md-3 offset-lg-4">
+  <div class="col-md-8 col-lg-7 mx-auto">
     <div class="card w-100">
       <img
         src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur.png"
@@ -12,8 +12,11 @@
         </div>
         <div class="mt-5 mb-5">
           <p class="card-text m-2"><strong>Email:</strong> {{ user?.email }}</p>
-          <p class="card-text"><strong>Horas:</strong>{{ user?.contract }}</p>
+          <p class="card-text"><strong>Horas:</strong> {{ user?.contract }}</p>
         </div>
+        <button class="botonPro" [routerLink]="['/edit-password']">
+          Cambiar contraseña
+        </button>
       </div>
     </div>
   </div>
