@@ -1,5 +1,4 @@
 import { Component, inject, Input } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import {
   FormControl,
@@ -14,7 +13,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-user',
-  imports: [HeaderComponent, FooterComponent, FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './edit-user.component.html',
   styleUrl: './edit-user.component.css',
 })
@@ -46,7 +45,6 @@ export class EditUserComponent {
 
   async ngOnInit(): Promise<void> {
     const user = await this.userService.getById(Number(this.id));
-    console.log(user);
     const { username, email, password, role, contract } = user!;
     this.editUserForm.setValue({ username, email, role, contract });
   }

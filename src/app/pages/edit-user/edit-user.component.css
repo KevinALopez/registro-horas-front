@@ -1,12 +1,10 @@
 /* 🔥 Ajuste general para evitar que el header tape el formulario */
 .container {
-  margin-top: 150px !important;
-  max-width: 600px;
+  margin-top: 6rem;
   background-image: url(/images/-w3UOCHSTG21jOEzaVCcfw.webp);
   padding: 20px;
   border-radius: 10px;
 }
-
 
 /* 🔥 Estiliza el formulario dentro de un marco con sombra */
 .card {
@@ -27,9 +25,9 @@ h2 {
 
 /* 🔥 Estilos de los inputs */
 .form-control {
-  border: 1px solid #726DAD;
+  border: 1px solid #726dad;
   border-radius: 5px;
-  background-color: #F0EDE6;
+  background-color: #f0ede6;
   color: #272025;
   padding: 10px;
 }
@@ -47,7 +45,7 @@ h2 {
 }
 
 .btn-primary:hover {
-  background-color: #726DAD;
+  background-color: #726dad;
 }
 
 .btn-secondary {
@@ -62,7 +60,24 @@ h2 {
 
 /* 🔥 Pequeña ayuda debajo del campo de contraseña */
 .form-text {
-  color: #726DAD;
+  color: #726dad;
   font-size: 12px;
 }
 
+label {
+  font-weight: bold;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .edit-user {
+    width: 100%;
+    max-width: calc(100% - 200px);
+    float: right;
+
+    > div {
+      max-width: 600px;
+      margin: 7rem auto;
+    }
+  }
+}
