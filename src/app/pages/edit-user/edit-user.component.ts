@@ -22,7 +22,7 @@ export class EditUserComponent {
   editUserForm: FormGroup;
   userService = inject(UsersService);
   router = inject(Router);
-  @Input() userId: string | null = null;
+  @Input() id: string | null = null;
 
   constructor() {
     this.editUserForm = new FormGroup({
@@ -36,12 +36,6 @@ export class EditUserComponent {
         Validators.required,
         Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/), // Validación estricta de email
       ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(30),
-        Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/), // Al menos una mayúscula y un número
-      ]),
       role: new FormControl('', [Validators.required]),
       contract: new FormControl('', [
         Validators.required,
@@ -51,14 +45,15 @@ export class EditUserComponent {
   }
 
   async ngOnInit(): Promise<void> {
-    const user = await this.userService.getById(Number(this.userId));
+    const user = await this.userService.getById(Number(this.id));
+    console.log(user);
     const { username, email, password, role, contract } = user!;
-    this.editUserForm.setValue({ username, email, password, role, contract });
+    this.editUserForm.setValue({ username, email, role, contract });
   }
   async onSubmit(): Promise<void> {
     try {
       const user = await this.userService.updateById(
-        Number(this.userId),
+        Number(this.id),
         this.editUserForm.value
       );
       Swal.fire(
