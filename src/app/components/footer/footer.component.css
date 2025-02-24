@@ -1,11 +1,7 @@
 /* Estilos del footer */
 .custom-footer {
-<<<<<<< HEAD
-  position: static;
   text-align: center;
-=======
   position: fixed;
->>>>>>> feature-ultimosArreglosKevin
   padding: 0.5rem 0;
   font-size: 0.875rem;
   bottom: 0;
@@ -37,11 +33,7 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-<<<<<<< HEAD
-@media (max-width:426px) {
-=======
 @media (max-width: 426px) {
->>>>>>> feature-ultimosArreglosKevin
   .custom-footer {
     width: 100%;
   }

@@ -13,7 +13,6 @@ import { EditPasswordComponent } from './pages/edit-password/edit-password.compo
 import { RegistroHorasProyectoComponent } from './pages/registro-horas-proyecto/registro-horas-proyecto.component';
 import { HoursRecordedComponent } from './pages/hours-recorded/hours-recorded.component';
 import { InsertUserComponent } from './pages/insert-user/insert-user.component';
-import { CardComponent } from './components/card/card.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
@@ -61,12 +60,40 @@ export const routes: Routes = [
     component: ProfileComponent,
     canActivate: [authGuard],
   },
-  { path: 'users/edit/:id', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
-  { path: 'edit-user', component: EditUserComponent, canActivate: [authGuard, adminGuard] },
-  { path: 'projects', component: ProjectsListComponent, canActivate: [authGuard, adminGuard] },
-  { path: 'projects/edit/:projectId', component: EditProjectComponent, canActivate: [authGuard, adminGuard] },
-  { path: 'edit-password', component: EditPasswordComponent, canActivate: [authGuard] },
-  { path: 'hours-registered',component: HoursRecordedComponent, canActivate: [authGuard] },
-  { path: 'users/create', component: InsertUserComponent, canActivate: [authGuard, adminGuard] },
+  {
+    path: 'users/edit/:id',
+    component: EditUserComponent,
+    canActivate: [authGuard, adminGuard],
+  },
+  {
+    path: 'edit-user',
+    component: EditUserComponent,
+    canActivate: [authGuard, adminGuard],
+  },
+  {
+    path: 'projects',
+    component: ProjectsListComponent,
+    canActivate: [authGuard, adminGuard],
+  },
+  {
+    path: 'projects/edit/:projectId',
+    component: EditProjectComponent,
+    canActivate: [authGuard, adminGuard],
+  },
+  {
+    path: 'edit-password',
+    component: EditPasswordComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'hours-registered',
+    component: HoursRecordedComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'users/create',
+    component: InsertUserComponent,
+    canActivate: [authGuard, adminGuard],
+  },
   { path: '**', component: NotFoundComponent, canActivate: [authGuard] },
 ];

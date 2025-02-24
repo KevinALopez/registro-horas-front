@@ -14,22 +14,16 @@ import { HeaderComponent } from '../../components/header/header.component';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-form-create-project',
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    NavSidebarComponent,
-    HeaderComponent,
-  ],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './form-create-project.component.html',
   styleUrl: './form-create-project.component.css',
 })
 export class FormCreateProjectComponent {
   projectService = inject(ProjectsService);
   postForm: FormGroup;
-  router = inject(Router)
+  router = inject(Router);
 
   constructor() {
     this.postForm = new FormGroup(
@@ -59,11 +53,13 @@ export class FormCreateProjectComponent {
   }
   async setDataPost() {
     try {
-      const project = await this.projectService.createNewProject(this.postForm.value);
-      Swal.fire("", "Se ha creado correctamente el proyecto", "success");
+      const project = await this.projectService.createNewProject(
+        this.postForm.value
+      );
+      Swal.fire('', 'Se ha creado correctamente el proyecto', 'success');
       this.postForm.reset();
     } catch (error) {
-      Swal.fire("Error", "Error al crear el proyecto", "error");
+      Swal.fire('Error', 'Error al crear el proyecto', 'error');
     }
   }
   //validacion
