@@ -230,6 +230,11 @@
   }
 }
 
+
+
+
+
+
 @media (min-width: 768px) {
   .home {
     max-width: calc(100% - 200px);

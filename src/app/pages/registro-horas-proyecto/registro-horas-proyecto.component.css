@@ -1,5 +1,6 @@
 .register-hours {
   margin-top: 6rem;
+
 }
 
 @media (min-width: 768px) {
@@ -7,7 +8,7 @@
     max-width: calc(100% - 200px);
     float: right;
 
-    > div {
+    >div {
       max-width: 600px;
       margin: 0 auto;
     }

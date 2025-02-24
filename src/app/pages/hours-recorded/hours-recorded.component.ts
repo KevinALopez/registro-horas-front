@@ -203,7 +203,7 @@ export class HoursRecordedComponent implements OnInit {
   private modal: BootstrapModal | null = null;
   private userId: number | null = null;
 
-  constructor(private hoursService: HoursService) {}
+  constructor(private hoursService: HoursService) { }
 
   ngOnInit() {
     this.extractUserId();

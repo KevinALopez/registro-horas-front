@@ -4,12 +4,8 @@
     @if(!isProjectSelected) {
     <p class="text-center">Selecciona un proyecto:</p>
     } @if (isProjectSelected) {
-    <app-registrar-horas-form
-      [project]="selectedProject"
-    ></app-registrar-horas-form>
+    <app-registrar-horas-form [project]="selectedProject"></app-registrar-horas-form>
     }
-    <app-lista-proyectos-activos
-      (onSelectProject)="getSelectedProject($event)"
-    ></app-lista-proyectos-activos>
+    <app-lista-proyectos-activos (onSelectProject)="getSelectedProject($event)"></app-lista-proyectos-activos>
   </div>
 </section>
