@@ -16,6 +16,6 @@
 }
 
 .selected {
-  background-color: #007bff;
-  color: #fff;
+  background: linear-gradient(to top right, rgb(6, 6, 88), rgb(27, 47, 163), rgba(94, 190, 245, 0.863));
+  color: white;
 }

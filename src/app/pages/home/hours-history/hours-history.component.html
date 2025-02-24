@@ -2,10 +2,10 @@
   <div class="container mx-auto mt-4 px-0 border shadow row rellenoListas">
     <article class="px-0 d-flex justify-content-around">
       <span class="border w-100">Fecha</span><span class="border w-100">Horas</span><span
-        class="border w-100">Proyecto</span>
+        class="border w-100 ">Proyecto</span>
     </article>
     @for (record of history; track record.id) {
-    <article class="px-0 w-100">
+    <article class="px-0 w-100 ">
       <app-hour-entry [record]="record" />
     </article>
     } @empty {
