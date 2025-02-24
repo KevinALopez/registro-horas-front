@@ -1,22 +1,13 @@
 @if (availableTime.hours !== 0 || availableTime.minutes !== 0) {
 <form
-  class="border rounded p-4 d-flex flex-column justify-content-center align-items-center gap-2 mt-3 register-hours-form"
-  [formGroup]="formModel"
-  (ngSubmit)="logHours()"
->
+  class="border rounded p-4 d-flex flex-column justify-content-center align-items-center gap-2 mt-3 register-hours-form rellenoListas "
+  [formGroup]="formModel" (ngSubmit)="logHours()">
   <h4 class="text-center">{{ project.name }}</h4>
   <div class="d-flex flex-column flex-md-row justify-content-center gap-2">
     @if (availableTime.hours > 0) {
     <div>
-      <label class="form-label" for="hours"
-        >Horas({{ availableTime.hours }}):</label
-      >
-      <input
-        class="form-control"
-        type="number"
-        id="hours"
-        formControlName="hours"
-      />
+      <label class="form-label" for="hours">Horas({{ availableTime.hours }}):</label>
+      <input class="form-control" type="number" id="hours" formControlName="hours" />
       @if(checkErrorField('hours', 'required')) {
       <p class="error">Campo obligatorio</p>
       } @if(checkErrorField('hours', 'min')) {
@@ -29,15 +20,8 @@
     </div>
     } @if (availableTime.minutes > 0) {
     <div>
-      <label class="form-label" for="minutes"
-        >Minutos({{ availableTime.minutes }}):</label
-      >
-      <input
-        class="form-control"
-        type="number"
-        id="minutes"
-        formControlName="minutes"
-      />
+      <label class="form-label" for="minutes">Minutos({{ availableTime.minutes }}):</label>
+      <input class="form-control" type="number" id="minutes" formControlName="minutes" />
       @if(checkErrorField('minutes', 'required')) {
       <p class="error">Campo obligatorio</p>
       } @if(checkErrorField('minutes', 'min')) {
@@ -51,13 +35,7 @@
     }
     <div>
       <label class="form-label" for="date">Fecha Trabajada:</label>
-      <input
-        class="form-control"
-        type="date"
-        id="date"
-        [max]="getToday()"
-        formControlName="date"
-      />
+      <input class="form-control" type="date" id="date" [max]="getToday()" formControlName="date" />
       @if(checkErrorField('date', 'required')) {
       <p class="error">Campo obligatorio</p>
       } @if(checkErrorField('date', 'dateValidator')) {
@@ -66,12 +44,7 @@
     </div>
   </div>
   <div>
-    <input
-      type="submit"
-      value="Registrar"
-      class="btn btn-primary mt-3 mt-md-2"
-      [disabled]="formModel.invalid"
-    />
+    <input type="submit" value="Registrar" class="botonPro mt-3 mt-md-2" [disabled]="formModel.invalid" />
   </div>
 </form>
 } @if(availableTime.hours === 0 && availableTime.minutes === 0) {
