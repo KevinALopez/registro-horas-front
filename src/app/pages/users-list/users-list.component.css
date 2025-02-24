@@ -1,15 +1,37 @@
 .users-list {
-    margin-top: 7rem;
-    color: black;
+  margin-top: 6.5rem;
+  color: black;
 
-    div {
-        max-height: 55vh;
-        max-width: 600px;
-        overflow: scroll;
-        scrollbar-width: none;
+  div {
+    max-height: 495px;
+    max-width: 600px;
+    overflow: scroll;
+    scrollbar-width: none;
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
+    &::-webkit-scrollbar {
+      display: none;
     }
+  }
+}
+
+@media (width > 374px) {
+  .users-list {
+    div {
+      max-height: 525px;
+    }
+  }
+}
+
+@media (width > 767px) {
+  .users-list {
+    width: 100%;
+    max-width: calc(100% - 200px);
+    float: right;
+  }
+}
+
+@media (width > 1023px) {
+  .users-list {
+    margin-top: 5.5rem;
+  }
 }

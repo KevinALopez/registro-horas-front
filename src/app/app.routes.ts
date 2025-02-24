@@ -66,11 +66,6 @@ export const routes: Routes = [
     canActivate: [authGuard, adminGuard],
   },
   {
-    path: 'edit-user',
-    component: EditUserComponent,
-    canActivate: [authGuard, adminGuard],
-  },
-  {
     path: 'projects',
     component: ProjectsListComponent,
     canActivate: [authGuard, adminGuard],

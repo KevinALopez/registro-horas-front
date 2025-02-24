@@ -1,19 +1,27 @@
 .user {
-    margin: auto;
+  margin: auto;
 
-    h1 {
-        font-size: 1.5rem;
-    }
+  h1 {
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 130px;
+  }
 
-    button {
-        padding: 0.2rem 0.4rem;
-    }
+  button {
+    padding: 0.2rem 0.4rem;
+  }
 }
 
 @media (min-width: 375px) {
-    .user {
-        button {
-            padding: 0.4rem 0.6rem;
-        }
+  .user {
+    h1 {
+      max-width: 150px;
     }
+
+    button {
+      padding: 0.4rem 0.6rem;
+    }
+  }
 }
