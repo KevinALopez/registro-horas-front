@@ -2,17 +2,27 @@
   border: none;
 }
 
+.invalid {
+  border-radius: 10px;
+  padding: 0.2rem 1rem;
+  border: 2px solid black;
+  background: linear-gradient(to top right,
+      rgba(52, 52, 53, 0.742),
+      rgba(121, 121, 122, 0.704));
+}
+
 @media (min-width: 768px) {
   .insert-user {
     width: 100%;
     max-width: calc(100% - 200px);
     float: right;
 
-    > div {
+    >div {
       display: flex;
       flex-direction: column;
       align-items: center;
-      > div {
+
+      >div {
         max-width: 600px;
       }
     }
