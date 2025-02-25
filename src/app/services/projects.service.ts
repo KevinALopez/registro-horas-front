@@ -21,7 +21,8 @@ type UpdateResponse = {
 })
 export class ProjectsService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:3000/api/projects';
+  private baseUrl =
+    'http://ec2-13-60-253-146.eu-north-1.compute.amazonaws.com/api/projects';
 
   createNewProject(project: IProject) {
     return lastValueFrom(

@@ -65,7 +65,8 @@ export class StopwatchComponent {
       const formattedStarTime = formatDate(
         startTime,
         'yyyy-MM-dd HH:mm:ss',
-        'en-US'
+        'en-US',
+        'UTC'
       );
 
       if (!this.runningPause && this.startId === -1) {
@@ -97,7 +98,8 @@ export class StopwatchComponent {
       const formattedStarTime = formatDate(
         startTime,
         'yyyy-MM-dd HH:mm:ss',
-        'en-US'
+        'en-US',
+        'UTC'
       );
       if (this.startIdPause === -1) {
         const { id } = await this.hoursService.registerPauseStart(

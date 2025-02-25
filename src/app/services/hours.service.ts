@@ -41,26 +41,27 @@ type IncompletePauseResponse = {
   end: null;
   type: string;
 };
-export type HoursOnProjectsResponse={
+export type HoursOnProjectsResponse = {
   data: [
     {
-      id: number,
-      hours: number,
-      date: string,
+      id: number;
+      hours: number;
+      date: string;
       project: {
-        id: number,
-        name: string
-      }
+        id: number;
+        name: string;
+      };
     }
-  ]
-}
+  ];
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class HoursService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:3000/api/hours';
+  private baseUrl =
+    'http://ec2-13-60-253-146.eu-north-1.compute.amazonaws.com/api/hours';
 
   getHoursInMonth(month: number, year: number) {
     return lastValueFrom(
@@ -144,12 +145,9 @@ export class HoursService {
     );
   }
 
-
-  getHoursOnProjects(){
+  getHoursOnProjects() {
     return lastValueFrom(
-      this.http.get<HoursOnProjectsResponse>(
-        `${this.baseUrl}/worked/projects`
-      )
+      this.http.get<HoursOnProjectsResponse>(`${this.baseUrl}/worked/projects`)
     );
   }
 }
